@@ -35,6 +35,7 @@ namespace InCarGestureApplication
             contactScreen = new Contacts();
 
             InitializeComponent();
+            this.window.Children.Add(startScreen);
         }
 
         public void WindowLoaded(object sender, RoutedEventArgs e)
@@ -47,8 +48,8 @@ namespace InCarGestureApplication
 
             Console.ReadLine();
 
-            leap.Stop();
-            leap.Destroy();
+            //leap.Stop();
+            //leap.Destroy();
         }
 
     }
