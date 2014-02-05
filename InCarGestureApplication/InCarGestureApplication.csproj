@@ -71,6 +71,7 @@
     <Compile Include="Leap\Count\CountDetector.cs" />
     <Compile Include="Leap\Count\ICountObserver.cs" />
     <Compile Include="Leap\Count\IGestureObserver.cs" />
+    <Compile Include="Leap\Count\IParentObserver.cs" />
     <Compile Include="Leap\GestureDetector.cs" />
     <Compile Include="Leap\GestureSpace.cs" />
     <Compile Include="Leap\IFrameListener.cs" />

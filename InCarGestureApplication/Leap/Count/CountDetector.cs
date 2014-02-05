@@ -126,7 +126,7 @@ namespace Leap.Gestures.Count
        
         private AcceptedGestures gestureType;
 
-        private List<ICountObserver> observers;
+        private List<IParentObserver> observers;
         private DateTime countStart;
         private DateTime countSelectedAt;
         private int countFrames;
@@ -147,7 +147,7 @@ namespace Leap.Gestures.Count
             activeGroup = 0; */
 
             // Initialise list of observers
-            observers = new List<ICountObserver>();
+            observers = new List<IParentObserver>();
 
             // Initialise selection metadata
             countStart = DateTime.Now;
@@ -216,18 +216,25 @@ namespace Leap.Gestures.Count
             if (SwipeLeft(frame) != AcceptedGestures.InvalidGesture)
             {
 
-                foreach (IGestureObserver observer in observers)
+                foreach (IParentObserver observer in observers)
                 {
-                    observer.GestureComplete(SwipeLeft(frame));
+                    if (observer.Equals(typeof(IGestureObserver)))
+                    {
+                        IGestureObserver ig = (IGestureObserver)observer;
+                        ig.GestureComplete(SwipeLeft(frame));
+                    }
                 }
             }
 
             if (SwipeRight(frame) != AcceptedGestures.InvalidGesture)
             {
-                foreach (IGestureObserver observer in observers)
+                foreach (IParentObserver observer in observers)
                 {
-                    observer.GestureComplete(SwipeRight(frame));
-                    
+                    if (observer.Equals(typeof(IGestureObserver)))
+                    {
+                        IGestureObserver ig = (IGestureObserver)observer;
+                        ig.GestureComplete(SwipeRight(frame));
+                    }
                 }
             }
 
@@ -820,14 +827,18 @@ namespace Leap.Gestures.Count
                 edgeToShow = 2;
             }
 
-            foreach (ICountObserver observer in observers)
+            foreach (IParentObserver observer in observers)
             {
-                if (workspace != null)
+                if (observer is ICountObserver)
                 {
-                    observer.CursorUpdate(workspace.Normalise(avgPos), fingers.Count, edgeToShow);
+                    ICountObserver ic = (ICountObserver)observer;
+                    if (workspace != null)
+                    {
+                        ic.CursorUpdate(workspace.Normalise(avgPos), fingers.Count, edgeToShow);
+                    }
                 }
-            }
 
+            }
         }
         #endregion
 
@@ -839,8 +850,14 @@ namespace Leap.Gestures.Count
             //activeGroup = 0;
             activeHandId = handId;
 
-            foreach (ICountObserver observer in observers)
-                observer.EnterWorkspace(-1, fingers);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.EnterWorkspace(-1, fingers);
+                }
+            }
 
             Log("Count: EnterWorkspace");
         }
@@ -858,10 +875,16 @@ namespace Leap.Gestures.Count
             discardedFrames = 0;
             activeHandId = -1;
 
-            foreach (ICountObserver observer in observers)
-                observer.LeaveWorkspace(0);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.LeaveWorkspace(0);
+                }
 
-            Log("Count: LeaveWorkspace");
+                Log("Count: LeaveWorkspace");
+            }
         }
 
         private void PoseStart()
@@ -896,8 +919,15 @@ namespace Leap.Gestures.Count
             countTotal = 0;
             countFrames = 0;
 
-            foreach (ICountObserver observer in observers)
-                observer.CountStart(null, roi, count);
+            foreach (IParentObserver observer in observers)
+            {
+                //if (observer.Equals(typeof(ICountObserver)))
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.CountStart(null, roi, count, this);
+                }
+            }
 
             Log(String.Format("Count: CountStart {0}", count));
         }
@@ -909,9 +939,14 @@ namespace Leap.Gestures.Count
             countFrames = 0;
             discardedFrames = 0;
 
-            foreach (ICountObserver observer in observers)
-                observer.CountStop();
-
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.CountStop();
+                }
+            }
             // Reset selection progress
             CountProgress(0, null);
 
@@ -925,8 +960,14 @@ namespace Leap.Gestures.Count
 
             roi = FindROIWithinGroup(count);
 
-            foreach (ICountObserver observer in observers)
-                observer.CountComplete(null, roi, time, count);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.CountComplete(null, roi, time, count);
+                }
+            }
 
             // Trigger a ROI set activation
             if (roi.ToActivate != null && roi.ToActivate.Length > 0)
@@ -940,8 +981,14 @@ namespace Leap.Gestures.Count
 
         private void CountProgress(long time, ROI.ROI roi)
         {
-            foreach (ICountObserver observer in observers)
-                observer.CountProgress(time, roi);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is ICountObserver)
+                {
+                    ICountObserver ic = (ICountObserver)observer;
+                    ic.CountProgress(time, roi);
+                }
+            }
         }
 
         /*private void GroupLeave(int group)
@@ -975,12 +1022,12 @@ namespace Leap.Gestures.Count
         #endregion
 
         #region ICountObservers
-        public void RegisterObserver(ICountObserver observer)
+        public void RegisterObserver(IParentObserver observer)
         {
             observers.Add(observer);
         }
 
-        public void UnregisterObserver(ICountObserver observer)
+        public void UnregisterObserver(IParentObserver observer)
         {
             observers.Remove(observer);
         }

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Leap.Gestures.Count
 {
-    public interface IGestureObserver: IParentObserver
+    public interface IParentObserver
     {
-        void GestureComplete(AcceptedGestures type);
     }
 }

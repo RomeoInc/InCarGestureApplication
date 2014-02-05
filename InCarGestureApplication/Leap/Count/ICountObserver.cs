@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Leap.Gestures.Count
 {
-    public interface ICountObserver
+    public interface ICountObserver: IParentObserver
     {
         // Workspace updates
         void EnterWorkspace(int hands, int fingers);
         void LeaveWorkspace(int dummyToAllowOverriding);
 
         // Count selection updates
-        void CountStart(Vector pos, ROI.ROI roi, int count);
+        void CountStart(Vector pos, ROI.ROI roi, int count, CountDetector cd);
         void CountStop();
         void CountComplete(Vector pos, ROI.ROI roi, DateTime time, int count);
         void CountProgress(long dwellTime, ROI.ROI roi);

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LeapPointer_PC.Menu
+namespace InCarGestureApplication
 {
     /// <summary>
     /// Interaction logic for Music.xaml
