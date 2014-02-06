@@ -14,29 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LeapPointer_PC.Menu
+namespace InCarGestureApplication
 {
     /// <summary>
     /// Interaction logic for Music.xaml
     /// </summary>
     public partial class Music : UserControl, IGestureObserver
     {
-        
+        MainWindow mw;
         public Music()
         {
             InitializeComponent();
-           /* GoBack();
-            NextSong();
-            PreviousSong();
-            TurnUp();
-            TurnDown();
-            Interact();*/
         }
 
-        public void GestureComplete(AcceptedGestures type){
+        public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers){
             switch(type){
                 case AcceptedGestures.GoBack:
-                    GoBack();
+                    GoBack(cd, observers);
                     break;
                 case AcceptedGestures.SwipeLeft:
                     NextSong();
@@ -58,9 +52,17 @@ namespace LeapPointer_PC.Menu
                 }
         }
 
-        private void GoBack()
+        private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
-            throw new NotImplementedException();
+            mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is IGestureObserver)
+                {
+                    IGestureObserver ig = (IGestureObserver)observer;
+                    cd.UnregisterObserver(ig);
+                }
+            }
         }
 
         
@@ -87,6 +89,11 @@ namespace LeapPointer_PC.Menu
         private void Interact()
         {
             throw new NotImplementedException();
+        }
+
+        public void setWindow(MainWindow mw)
+        {
+            this.mw = mw;
         }
         
     }

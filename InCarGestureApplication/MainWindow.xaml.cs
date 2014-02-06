@@ -1,5 +1,4 @@
 ﻿using Leap;
-using LeapPointer_PC.Menu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +29,7 @@ namespace InCarGestureApplication
         public MainWindow()
         {
             startScreen = new StartMenu();
+            startScreen.setWindow(this);
             musicScreen = new Music();
             gpsScreen = new GPS();
             contactScreen = new Contacts();

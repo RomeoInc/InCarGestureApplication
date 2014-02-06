@@ -13,25 +13,45 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LeapPointer_PC.Menu
+namespace InCarGestureApplication
 {
     /// <summary>
     /// Interaction logic for Contacts.xaml
     /// </summary>
     public partial class Contacts : UserControl, IGestureObserver
     {
+        MainWindow mw;
+
         public Contacts()
         {
             InitializeComponent();
-           /* Back();
-            NextPerson();
-            PreviousPerson();
-            Call();
-            HangUp();
-            Reject();*/
         }
 
-        private void Back()
+        public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers)
+        {
+            switch (type)
+            {
+                case AcceptedGestures.GoBack:
+                    GoBack(cd, observers);
+                    break;
+                case AcceptedGestures.SwipeUp:
+                    NextPerson();
+                    break;
+                case AcceptedGestures.SwipeDown:
+                    PreviousPerson();
+                    break;
+                case AcceptedGestures.SelectOption:
+                    Call();
+                    break;
+                case AcceptedGestures.AnswerCall:
+                    HangUp();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
             throw new NotImplementedException();
         }
@@ -56,14 +76,5 @@ namespace LeapPointer_PC.Menu
             throw new NotImplementedException();
         }
 
-        private void Reject()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GestureComplete(AcceptedGestures type)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

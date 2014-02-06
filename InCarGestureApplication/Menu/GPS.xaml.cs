@@ -13,32 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LeapPointer_PC.Menu
+namespace InCarGestureApplication
 {
     /// <summary>
     /// Interaction logic for GPS.xaml
     /// </summary>
     public partial class GPS : UserControl, IGestureObserver 
     {
+        MainWindow mw;
+
         public GPS()
         {
             InitializeComponent();
-          /*  Back();
-            ScrollLeft();
-            ScrollRight();
-            ScrollUp();
-            ScrollDown();
-            ZoomIn();
-            ZoomOut();
-            PlaceMarker();*/
         }
 
-        public void GestureComplete(AcceptedGestures type)
+        public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers)
         {
             switch (type)
             {
                 case AcceptedGestures.GoBack:
-                    Back();
+                    Back(cd, observers);
                     break;
                 case AcceptedGestures.SwipeLeft:
                     ScrollLeft();
@@ -66,9 +60,17 @@ namespace LeapPointer_PC.Menu
             }
         }
 
-        private void Back()
+        private void Back(CountDetector cd, List<IParentObserver> observers)
         {
-            throw new NotImplementedException();
+            mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is IGestureObserver)
+                {
+                    IGestureObserver ig = (IGestureObserver)observer;
+                    cd.UnregisterObserver(ig);
+                }
+            }
         }
 
         private void ScrollLeft()
@@ -104,6 +106,11 @@ namespace LeapPointer_PC.Menu
         private void PlaceMarker()
         {
             throw new NotImplementedException();
+        }
+
+        public void setWindow(MainWindow mw)
+        {
+            this.mw = mw;
         }
     }
 }
