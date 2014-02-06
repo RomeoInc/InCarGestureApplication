@@ -4,6 +4,10 @@ using System.Threading;
 using Leap;
 using Leap.ROI;
 using Leap.Gestures.Count;
+<<<<<<< HEAD
+=======
+using LeapPointer_PC.Menu;
+>>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
 using InCarGestureApplication;
 
 
