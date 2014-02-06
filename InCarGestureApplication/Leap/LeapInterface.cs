@@ -32,6 +32,7 @@ namespace Leap
         public void Start()
         {
             // Listen for updates from the Leap controller
+            System.Console.WriteLine("LISTEN FRAME");
             controller.AddListener(listener);
         }
 

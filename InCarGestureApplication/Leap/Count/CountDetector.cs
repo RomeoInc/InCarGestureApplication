@@ -218,17 +218,10 @@ namespace Leap.Gestures.Count
 
                 foreach (IParentObserver observer in observers)
                 {
-<<<<<<< HEAD
                     if (observer is IGestureObserver)
                     {
                         IGestureObserver ig = (IGestureObserver)observer;
                         ig.GestureComplete(SwipeLeft(frame), this, observers);
-=======
-                    if (observer.Equals(typeof(IGestureObserver)))
-                    {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeLeft(frame));
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
                     }
                 }
             }
@@ -237,17 +230,10 @@ namespace Leap.Gestures.Count
             {
                 foreach (IParentObserver observer in observers)
                 {
-<<<<<<< HEAD
                     if (observer is IGestureObserver)
                     {
                         IGestureObserver ig = (IGestureObserver)observer;
                         ig.GestureComplete(SwipeRight(frame), this, observers);
-=======
-                    if (observer.Equals(typeof(IGestureObserver)))
-                    {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeRight(frame));
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
                     }
                 }
             }
@@ -1048,11 +1034,7 @@ namespace Leap.Gestures.Count
                 if (observer is ICountObserver)
                 {
                     ICountObserver ic = (ICountObserver)observer;
-<<<<<<< HEAD
-                    //ic.CountComplete(null, roi, time, count);
-=======
                     ic.CountComplete(null, roi, time, count);
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
                 }
             }
 

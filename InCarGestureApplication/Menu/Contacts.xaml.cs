@@ -53,7 +53,15 @@ namespace InCarGestureApplication
 
         private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
-            throw new NotImplementedException();
+            mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+            foreach (IParentObserver observer in observers)
+            {
+                if (observer is IGestureObserver)
+                {
+                    IGestureObserver ig = (IGestureObserver)observer;
+                    cd.UnregisterObserver(ig);
+                }
+            }
         }
 
         private void NextPerson()

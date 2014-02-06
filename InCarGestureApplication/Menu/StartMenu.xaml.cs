@@ -25,20 +25,14 @@ namespace InCarGestureApplication
         MainWindow mw;
         Music musicScreen;
         GPS gpsScreen;
-<<<<<<< HEAD
         Contacts contactScreen;
-=======
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
 
         public StartMenu()
         {
             InitializeComponent();
             musicScreen = new Music();
             gpsScreen = new GPS();
-<<<<<<< HEAD
             contactScreen = new Contacts();
-=======
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
         }
 
         public void EnterWorkspace(int hands, int fingers) { }
@@ -51,7 +45,6 @@ namespace InCarGestureApplication
             {
                 case 1:
                     cd.RegisterObserver(musicScreen);
-<<<<<<< HEAD
                     mw.Dispatcher.Invoke((Action)(() => {
                         mw.window.Children.Add(musicScreen);
                     }));
@@ -69,19 +62,6 @@ namespace InCarGestureApplication
                     }));
                     break;
                 default:
-=======
-
-                    mw.Dispatcher.Invoke((Action)(() => {
-                        mw.window.Children.Add(musicScreen);
-
-                    }));
-                    break;
-                case 2:
-                    mw.Dispatcher.Invoke((Action)(() => {
-                        mw.window.Children.Add(gpsScreen);
-                    }));
-                case 3:
->>>>>>> 6270c0e373b1529d10bb2519c13fa33455aad1e4
                     break;
             }
         }
