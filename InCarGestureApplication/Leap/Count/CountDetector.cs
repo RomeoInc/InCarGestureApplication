@@ -988,12 +988,13 @@ namespace Leap.Gestures.Count
             countTotal = 0;
             countFrames = 0;
 
-            foreach (IParentObserver observer in observers)
+            for (int i = 0; i < observers.Count; i++ )
             {
                 //if (observer.Equals(typeof(ICountObserver)))
-                if (observer is ICountObserver)
+                Log(String.Format("Observer{0}", observers[i]));
+                if (observers[i] is ICountObserver)
                 {
-                    ICountObserver ic = (ICountObserver)observer;
+                    ICountObserver ic = (ICountObserver)observers[i];
                     ic.CountStart(null, roi, count, this);
                 }
             }
@@ -1094,7 +1095,10 @@ namespace Leap.Gestures.Count
         public void RegisterObserver(IParentObserver observer)
         {
             observers.Add(observer);
+            
         }
+
+      //  public void 
 
         public void UnregisterObserver(IParentObserver observer)
         {

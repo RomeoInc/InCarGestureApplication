@@ -100,7 +100,7 @@ namespace InCarGestureApplication
 
         private void ZoomOut()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         private void PlaceMarker()

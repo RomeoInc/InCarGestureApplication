@@ -20,7 +20,7 @@ namespace Leap
         public override void OnFrame(Controller controller)
         {
             Frame frame = controller.Frame();
-            Console.WriteLine("FRAME");
+            //Console.WriteLine("FRAME");
             foreach (IFrameListener frameListener in frameListeners)
             {
                 frameListener.OnFrame(frame);

@@ -46,18 +46,21 @@ namespace InCarGestureApplication
                 case 1:
                     cd.RegisterObserver(musicScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
+                        mw.window.Children.Clear();
                         mw.window.Children.Add(musicScreen);
                     }));
                     break;
                 case 2:
                     cd.RegisterObserver(gpsScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
+                        mw.window.Children.Clear();
                         mw.window.Children.Add(gpsScreen);
                     }));
                     break;
                 case 3:
                     cd.RegisterObserver(contactScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
+                        mw.window.Children.Clear();
                         mw.window.Children.Add(contactScreen);
                     }));
                     break;
