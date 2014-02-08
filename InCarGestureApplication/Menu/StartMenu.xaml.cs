@@ -39,11 +39,20 @@ namespace InCarGestureApplication
         public void LeaveWorkspace(int dummyToAllowOverriding) { }
 
         // Count selection updates
-        public void CountStart(Leap.Vector pos, ROI roi,  int count, CountDetector cd) 
+        public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) 
         {
             switch (count)
             {
                 case 1:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
                     cd.RegisterObserver(musicScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
                         mw.window.Children.Clear();
@@ -51,6 +60,15 @@ namespace InCarGestureApplication
                     }));
                     break;
                 case 2:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
                     cd.RegisterObserver(gpsScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
                         mw.window.Children.Clear();
@@ -58,6 +76,15 @@ namespace InCarGestureApplication
                     }));
                     break;
                 case 3:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
                     cd.RegisterObserver(contactScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
                         mw.window.Children.Clear();

@@ -50,7 +50,7 @@ namespace Leap.Gestures.Count
         /// How many frames to discard before starting to track
         /// a finger count gesture.
         /// </summary>
-        public const int READY_FRAMES = 10;
+        public const int READY_FRAMES = 40;
 
         /// <summary>
         /// Lowest error in finger count which is acceptable. This is
@@ -995,7 +995,7 @@ namespace Leap.Gestures.Count
                 if (observers[i] is ICountObserver)
                 {
                     ICountObserver ic = (ICountObserver)observers[i];
-                    ic.CountStart(null, roi, count, this);
+                    ic.CountStart(null, roi, count, this, observers);
                 }
             }
 

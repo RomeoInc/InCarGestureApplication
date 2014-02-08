@@ -12,7 +12,7 @@ namespace Leap.Gestures.Count
         void LeaveWorkspace(int dummyToAllowOverriding);
 
         // Count selection updates
-        void CountStart(Vector pos, ROI.ROI roi, int count, CountDetector cd);
+        void CountStart(Vector pos, ROI.ROI roi, int count, CountDetector cd, List<IParentObserver> observers);
         void CountStop();
         void CountComplete(Vector pos, ROI.ROI roi, DateTime time, int count);
         void CountProgress(long dwellTime, ROI.ROI roi);

@@ -84,5 +84,10 @@ namespace InCarGestureApplication
             throw new NotImplementedException();
         }
 
+        public void setWindow(MainWindow mw)
+        {
+            this.mw = mw;
+        }
+
     }
 }
