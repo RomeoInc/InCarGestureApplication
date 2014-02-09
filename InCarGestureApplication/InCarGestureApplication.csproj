@@ -90,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Menu\Extras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu\GPS.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +110,9 @@
   <ItemGroup>
     <Compile Include="Menu\Contacts.xaml.cs">
       <DependentUpon>Contacts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Extras.xaml.cs">
+      <DependentUpon>Extras.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu\GPS.xaml.cs">
       <DependentUpon>GPS.xaml</DependentUpon>

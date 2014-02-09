@@ -23,7 +23,7 @@ namespace Leap.Gestures.Count
         SwipeIn,
         SwipeOut,
         RotateClockwise,
-        RotateAntiCLockwise,
+        RotateAntiClockwise,
         SelectOption,
         InvalidGesture
     }; 
@@ -50,7 +50,7 @@ namespace Leap.Gestures.Count
         /// How many frames to discard before starting to track
         /// a finger count gesture.
         /// </summary>
-        public const int READY_FRAMES = 40;
+        public const int READY_FRAMES = 10;
 
         /// <summary>
         /// Lowest error in finger count which is acceptable. This is
@@ -1030,12 +1030,14 @@ namespace Leap.Gestures.Count
 
             roi = FindROIWithinGroup(count);
 
-            foreach (IParentObserver observer in observers)
+            for (int i = 0; i < observers.Count; i++)
             {
-                if (observer is ICountObserver)
+                //if (observer.Equals(typeof(ICountObserver)))
+                Log(String.Format("Observer{0}", observers[i]));
+                if (observers[i] is ICountObserver)
                 {
-                    ICountObserver ic = (ICountObserver)observer;
-                    ic.CountComplete(null, roi, time, count);
+                    ICountObserver ic = (ICountObserver)observers[i];
+                    ic.CountComplete(null, roi, time, count, this, observers);
                 }
             }
 

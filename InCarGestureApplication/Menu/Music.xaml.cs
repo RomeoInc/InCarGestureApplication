@@ -41,7 +41,7 @@ namespace InCarGestureApplication
                 case AcceptedGestures.RotateClockwise:
                     TurnUp();
                     break;
-                case AcceptedGestures.RotateAntiCLockwise:
+                case AcceptedGestures.RotateAntiClockwise:
                     TurnDown();
                     break;
                 case AcceptedGestures.SelectOption:

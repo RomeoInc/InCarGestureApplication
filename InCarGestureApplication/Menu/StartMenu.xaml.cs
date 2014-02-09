@@ -26,6 +26,7 @@ namespace InCarGestureApplication
         Music musicScreen;
         GPS gpsScreen;
         Contacts contactScreen;
+        Extras extrasScreen;
 
         public StartMenu()
         {
@@ -33,6 +34,7 @@ namespace InCarGestureApplication
             musicScreen = new Music();
             gpsScreen = new GPS();
             contactScreen = new Contacts();
+            extrasScreen = new Extras();
         }
 
         public void EnterWorkspace(int hands, int fingers) { }
@@ -41,7 +43,7 @@ namespace InCarGestureApplication
         // Count selection updates
         public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) 
         {
-            switch (count)
+            /*switch (count)
             {
                 case 1:
                     foreach (IParentObserver observer in observers)
@@ -55,7 +57,8 @@ namespace InCarGestureApplication
                     }
                     cd.RegisterObserver(musicScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
-                        mw.window.Children.Clear();
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
                         mw.window.Children.Add(musicScreen);
                     }));
                     break;
@@ -71,7 +74,8 @@ namespace InCarGestureApplication
                     }
                     cd.RegisterObserver(gpsScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
-                        mw.window.Children.Clear();
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
                         mw.window.Children.Add(gpsScreen);
                     }));
                     break;
@@ -87,16 +91,111 @@ namespace InCarGestureApplication
                     }
                     cd.RegisterObserver(contactScreen);
                     mw.Dispatcher.Invoke((Action)(() => {
-                        mw.window.Children.Clear();
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
                         mw.window.Children.Add(contactScreen);
+                    }));
+                    break;
+                case 4:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
+                    cd.RegisterObserver(extrasScreen);
+                    mw.Dispatcher.Invoke((Action)(() =>
+                    {
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+                        mw.window.Children.Add(extrasScreen);
+                    }));
+                    break;
+                default:
+                    break;
+            }*/
+        }
+        public void CountStop() { }
+        public void CountComplete(Leap.Vector pos, ROI roi, DateTime time, int count, CountDetector cd, List<IParentObserver> observers)
+        { 
+        switch (count)
+            {
+                case 1:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
+                    cd.RegisterObserver(musicScreen);
+                    mw.Dispatcher.Invoke((Action)(() => {
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+                        mw.window.Children.Add(musicScreen);
+                    }));
+                    break;
+                case 2:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
+                    cd.RegisterObserver(gpsScreen);
+                    mw.Dispatcher.Invoke((Action)(() => {
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+                        mw.window.Children.Add(gpsScreen);
+                    }));
+                    break;
+                case 3:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
+                    cd.RegisterObserver(contactScreen);
+                    mw.Dispatcher.Invoke((Action)(() => {
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+                        mw.window.Children.Add(contactScreen);
+                    }));
+                    break;
+                case 4:
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            cd.UnregisterObserver(ig);
+                            break;
+                        }
+                    }
+                    cd.RegisterObserver(extrasScreen);
+                    mw.Dispatcher.Invoke((Action)(() =>
+                    {
+                        //mw.window.Children.Clear();
+                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+                        mw.window.Children.Add(extrasScreen);
                     }));
                     break;
                 default:
                     break;
             }
         }
-        public void CountStop() { }
-        public void CountComplete(Leap.Vector pos, ROI roi, DateTime time, int count) { }
         public void CountProgress(long dwellTime, ROI roi) { }
 
         // Cursor position update

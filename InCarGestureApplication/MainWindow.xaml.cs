@@ -25,6 +25,7 @@ namespace InCarGestureApplication
         private Music musicScreen;
         private GPS gpsScreen;
         private Contacts contactScreen;
+        private Extras extrasScreen;
         
         public MainWindow()
         {
@@ -33,6 +34,7 @@ namespace InCarGestureApplication
             musicScreen = new Music();
             gpsScreen = new GPS();
             contactScreen = new Contacts();
+            extrasScreen = new Extras();
 
             InitializeComponent();
             this.window.Children.Add(startScreen);
