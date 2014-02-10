@@ -61,7 +61,7 @@ namespace Leap
         }
 
         public override void OnExit(Controller controller)
-        {
+         {
             Log("Leap Exiting");
         }
         #endregion

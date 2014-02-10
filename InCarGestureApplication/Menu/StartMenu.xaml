@@ -16,31 +16,83 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.Column="0" Background="Cyan">
-            <Border BorderBrush="Gray" BorderThickness="5"/>
-            <TextBlock Text="Music" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" FontWeight="ExtraBold" FontFamily="CenturyGothic" Height="50" Width="200" Margin="136,377,154,63" RenderTransformOrigin="-0.278,0.26"/>
-            <Image HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="300" Margin="88,84,112,0" Source="Images/MusicNote.png "/>
-            <TextBlock Text="Option 1" TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="144,440,156,10"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image HorizontalAlignment="Center" Height="200" VerticalAlignment="Bottom" Width="200" Source="Images/MusicNote.png "/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Music" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="45" FontWeight="Bold"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Option 1" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1" Background="PowderBlue">
-            <Border BorderBrush="Gray" BorderThickness="5"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150" Source="Images/GPS.png "/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="GPS" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="45" FontWeight="Bold"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Option 2" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
+            </Grid>
+            <!--Border BorderBrush="Gray" BorderThickness="5"/>
             <TextBlock Text="GPS" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" FontWeight="ExtraBold" FontFamily="CenturyGothic" Height="50" Width="200" Margin="151,377,139,63" RenderTransformOrigin="-0.278,0.26"/>
             <Image HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="250" Margin="132,108,0,0" Source="Images/GPS.png" />
-            <TextBlock Text=" Option 2   " TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="162,440,118,10"/>
+            <TextBlock Text=" Option 2   " TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="162,440,118,10"/-->
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0" Background="LightGreen">
-            <Border BorderBrush="Gray" BorderThickness="5"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150" Source="Images/Phone.png "/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Contacts" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="45" FontWeight="Bold"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Option 3" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
+            </Grid>
+            <!--Border BorderBrush="Gray" BorderThickness="5"/>
             <TextBlock Text="Contacts" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" FontWeight="ExtraBold" FontFamily="CenturyGothic" Height="50" Width="300" Margin="94,374,96,66" RenderTransformOrigin="-0.278,0.26"/>
             <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Margin="141,129,0,0" Source="Images/Phone.png" RenderTransformOrigin="0.21,0.215"/>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="141,440,159,10"><Run Language="en-gb" Text=" "/><Run Text="Option 3"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="141,440,159,10"><Run Language="en-gb" Text=" "/><Run Text="Option 3"/></TextBlock-->
         </Grid>
 
-        <Grid x:Name="Extras"  Grid.Row="1" Grid.Column="1" Background="Ivory" HorizontalAlignment="Right" Height="500" VerticalAlignment="Bottom" Width="500">
-            <Border BorderBrush="Gray" BorderThickness="5"/>
+        <Grid Grid.Row="1" Grid.Column="1" Background="Ivory">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150" Source="Images/Extras.png "/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Extras" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="45" FontWeight="Bold"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Option 4" VerticalAlignment="Top" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
+            </Grid>
+            <!--Border BorderBrush="Gray" BorderThickness="5"/>
             <TextBlock Text="Extras" TextWrapping="Wrap" TextAlignment="Center" FontSize="50" FontWeight="ExtraBold" FontFamily="CenturyGothic" Height="50" Width="200" Margin="151,377,139,63" RenderTransformOrigin="-0.278,0.26"/>
             <Image HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="200" Margin="156,129,0,0" Source="Images/Extras.png"/>
-            <TextBlock Text="Option 4" TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="156,440,144,10"/>
+            <TextBlock Text="Option 4" TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="40" FontWeight="Bold"  Margin="156,440,144,10"/-->
         </Grid>
 
     </Grid>

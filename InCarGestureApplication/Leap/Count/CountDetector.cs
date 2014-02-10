@@ -133,6 +133,7 @@ namespace Leap.Gestures.Count
         private int countTotal;
         private int activeHandId;
         private int discardedFrames;
+        private LeapInterface leap;
        // private int activeGroup;
 
         public CountDetector(LeapInterface leap, GestureSpace space)
@@ -142,6 +143,7 @@ namespace Leap.Gestures.Count
             selectionState = CountSelectionState.Idle;
             activeHandId = -1;
             discardedFrames = 0;
+            this.leap = leap;
 
            /* // Initialise groups and ROIs
             activeGroup = 0; */
@@ -155,8 +157,8 @@ namespace Leap.Gestures.Count
             // Register gesture workspace
             this.RegisterWorkspace(space);
 
-            // Register this gesture detector for frame updates
-            leap.RegisterFrameListener(this);
+            // Register this gesture detector for frame updates and keep reference of the LeapMotion controller
+            this.leap.RegisterFrameListener(this);
 
             GestureDetector.DEBUG = false;
         }
