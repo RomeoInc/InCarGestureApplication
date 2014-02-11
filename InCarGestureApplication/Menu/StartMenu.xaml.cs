@@ -181,7 +181,7 @@ namespace InCarGestureApplication
                         {
                             IGestureObserver ig = (IGestureObserver)observer;
                             cd.UnregisterObserver(ig);
-                            ////break;
+                            break;
                         }
                     }
                     cd.RegisterObserver(extrasScreen);

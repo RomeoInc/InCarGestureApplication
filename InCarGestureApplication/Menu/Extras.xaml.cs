@@ -22,10 +22,18 @@ namespace InCarGestureApplication
     public partial class Extras : UserControl, IGestureObserver
     {
         MainWindow mw;
+        int powerValue;
+        int tempValue;
+        int driverState;
+        int passengerState;
 
         public Extras()
         {
             InitializeComponent();
+            powerValue = 0;
+            tempValue = 0;
+            driverState = 0;
+            passengerState = 0;
         }
 
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers)
@@ -85,52 +93,114 @@ namespace InCarGestureApplication
 
         private void PowerUp()
         {
-            throw new NotImplementedException();
+            if (powerValue < PowerSlider.Maximum)
+            {
+                powerValue++;
+                PowerSlider.Value = powerValue;
+            }
         }
 
         private void PowerDown()
         {
-            throw new NotImplementedException();
-        }
-
-        private void TemperatureDown()
-        {
-            throw new NotImplementedException();
+            if (powerValue > PowerSlider.Minimum)
+            {
+                powerValue--;
+                PowerSlider.Value = powerValue;
+            }
         }
 
         private void TemperatureUp()
         {
-            throw new NotImplementedException();
+            if (tempValue < TemperatureSlider.Maximum)
+            {
+                tempValue++;
+                TemperatureSlider.Value = tempValue;
+            }
         }
 
-        private void DriverWindowDown()
+        private void TemperatureDown()
         {
-            throw new NotImplementedException();
+            if (powerValue > PowerSlider.Minimum)
+            {
+                powerValue--;
+                PowerSlider.Value = powerValue;
+            }
         }
 
         private void DriverWindowUp()
         {
-            throw new NotImplementedException();
+            if (driverState < DriverSlider.Maximum)
+            {
+                driverState++;
+                DriverSlider.Value = driverState;
+            }
+        }
+
+        private void DriverWindowDown()
+        {
+            if (driverState > DriverSlider.Minimum)
+            {
+                driverState--;
+                DriverSlider.Value = driverState;
+            }
         }
 
         private void PassengerWindowOpen()
         {
-            throw new NotImplementedException();
+            if (passengerState < PassengerSlider.Maximum)
+            {
+                passengerState++;
+                PassengerSlider.Value = passengerState;
+            }
         }
 
         private void PassengerWindowClosed()
         {
-            throw new NotImplementedException();
+            if (passengerState > PassengerSlider.Minimum)
+            {
+                passengerState--;
+                PassengerSlider.Value = passengerState;
+            }
         }
 
         private void BothWindowsOpen()
         {
-            throw new NotImplementedException();
+            if (driverState < DriverSlider.Maximum && passengerState < PassengerSlider.Maximum)
+            {
+                driverState++;
+                passengerState++;
+                DriverSlider.Value = driverState;
+                PassengerSlider.Value = passengerState;
+
+            }
+            
+            else if (driverState < DriverSlider.Maximum)
+            {
+                driverState++;
+                DriverSlider.Value = driverState;
+            }
+            
+            else if (passengerState < PassengerSlider.Maximum)
+            {
+                passengerState++;
+                PassengerSlider.Value = passengerState;
+            }
+
         }
 
         private void BothWindowsClosed()
         {
-            throw new NotImplementedException();
+            if (driverState > DriverSlider.Minimum)
+            {
+                driverState--;
+                DriverSlider.Value = driverState;
+            }
+            
+            if (passengerState > PassengerSlider.Minimum)
+            {
+                passengerState--;
+                PassengerSlider.Value = passengerState;
+            }
         }
 
         public void setWindow(MainWindow mw)

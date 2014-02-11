@@ -21,10 +21,15 @@ namespace InCarGestureApplication
     public partial class Contacts : UserControl, IGestureObserver
     {
         MainWindow mw;
+        int selected;
 
         public Contacts()
         {
+            selected = 3;
             InitializeComponent();
+
+            Border defaultContact = (Border)ContactList.Children[selected];
+            defaultContact.BorderBrush = new SolidColorBrush(Colors.Black);
         }
 
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers)
@@ -66,17 +71,47 @@ namespace InCarGestureApplication
 
         private void NextPerson()
         {
-            throw new NotImplementedException();
+            if (selected < ContactList.Children.Count -1)
+            {
+                Border currentContact = (Border)ContactList.Children[selected];
+                currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
+
+
+                selected++;
+
+                Border nextContact = (Border)ContactList.Children[selected];
+                nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+            }
         }
 
         private void PreviousPerson()
         {
-            throw new NotImplementedException();
+            if (selected > 0)
+            {
+                Border currentContact = (Border)ContactList.Children[selected];
+                currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            
+                selected--;
+
+                Border nextContact = (Border)ContactList.Children[selected];
+                nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+            }
         }
 
         private void Call()
         {
-            throw new NotImplementedException();
+            Border currentContactBorder = (Border)ContactList.Children[selected];
+            Grid currentContact = (Grid) currentContactBorder.Child;
+            Image i = currentContact.Children.OfType<Image>().FirstOrDefault();
+            String contactImage = Convert.ToString(i.Source);
+
+            String contactName = currentContact.Children.OfType<TextBlock>().FirstOrDefault().Text;
+            DisplayImageArea.Source = new BitmapImage(new Uri(""+contactImage+"", UriKind.Relative)); 
+            DisplayNameArea.Text = "Calling" + contactName;
+            //Image picture = (Image) currentContact.Children[0];
+            //TextBlock name = (TextBlock) currentContact.Children[1];
+            //UIElementCollection ui = this.ContactList.Children.OfType<Grid>().All();
+           // currentContact.
         }
 
         private void HangUp()
