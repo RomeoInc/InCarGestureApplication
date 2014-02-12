@@ -12,10 +12,6 @@
             <RowDefinition Height="0.8*"/>
         </Grid.RowDefinitions>
         
-        <Grid Grid.Row="3">
-            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/HandIcons/One Finger Fill.png "/>
-        </Grid>
-
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />

@@ -108,15 +108,13 @@ namespace InCarGestureApplication
             String contactName = currentContact.Children.OfType<TextBlock>().FirstOrDefault().Text;
             DisplayImageArea.Source = new BitmapImage(new Uri(""+contactImage+"", UriKind.Relative)); 
             DisplayNameArea.Text = "Calling" + contactName;
-            //Image picture = (Image) currentContact.Children[0];
-            //TextBlock name = (TextBlock) currentContact.Children[1];
             //UIElementCollection ui = this.ContactList.Children.OfType<Grid>().All();
-           // currentContact.
         }
 
         private void HangUp()
         {
-            throw new NotImplementedException();
+            DisplayImageArea.Source = null;
+            DisplayNameArea.Text = "";
         }
 
         public void setWindow(MainWindow mw)

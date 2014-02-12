@@ -35,6 +35,7 @@ namespace InCarGestureApplication
             gpsScreen = new GPS();
             contactScreen = new Contacts();
             extrasScreen = new Extras();
+
         }
 
         public void EnterWorkspace(int hands, int fingers) { }
@@ -134,10 +135,14 @@ namespace InCarGestureApplication
                         }
                     }
                     cd.RegisterObserver(musicScreen);
+                    System.Media.SoundPlayer musicSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Music.wav");
+                    musicSound.Play();
+
                     mw.Dispatcher.Invoke((Action)(() => {
                         //mw.window.Children.Clear();
                         mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
                         mw.window.Children.Add(musicScreen);
+                         
                     }));
                     break;
                 case 2:
@@ -151,6 +156,8 @@ namespace InCarGestureApplication
                         }
                     }
                     cd.RegisterObserver(gpsScreen);
+                    System.Media.SoundPlayer gpsSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\GPS.wav");
+                    gpsSound.Play();
                     mw.Dispatcher.Invoke((Action)(() => {
                         //mw.window.Children.Clear();
                         mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
@@ -168,6 +175,8 @@ namespace InCarGestureApplication
                         }
                     }
                     cd.RegisterObserver(contactScreen);
+                    System.Media.SoundPlayer contactSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Phonebook.wav");
+                    contactSound.Play();
                     mw.Dispatcher.Invoke((Action)(() => {
                         //mw.window.Children.Clear();
                         mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
@@ -185,6 +194,9 @@ namespace InCarGestureApplication
                         }
                     }
                     cd.RegisterObserver(extrasScreen);
+                    System.Media.SoundPlayer extraSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Extras.wav");
+                    extraSound.Play();
+
                     mw.Dispatcher.Invoke((Action)(() =>
                     {
                         //mw.window.Children.Clear();
