@@ -54,6 +54,8 @@ namespace InCarGestureApplication
 
         private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
+            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
+            menuSound.Play();
             mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
             foreach (IParentObserver observer in observers)
             {
@@ -68,27 +70,42 @@ namespace InCarGestureApplication
         
         private void NextSong()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer nextSongSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Next Song.wav");
+            nextSongSound.Play();
         }
 
         private void PreviousSong()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer previousSongSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Previous Song.wav");
+            previousSongSound.Play();
         }
 
         private void TurnUp()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer volumeUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Up.wav");
+            volumeUpSound.Play();
+            currentSong.Dispatcher.Invoke((Action)(() => {
+                currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Allegro.mp3", UriKind.RelativeOrAbsolute);
+                currentSong.Play();
+            }));
         }
 
         private void TurnDown()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer volumeDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
+            volumeDownSound.Play();
         }
 
         private void Interact()
         {
-            throw new NotImplementedException();
+            //if music.state == "play"
+            //music.Pause();
+            System.Media.SoundPlayer pauseSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Pause.wav");
+            pauseSound.Play();
+            //else if music.state =="pause"
+            //music.Play();
+            System.Media.SoundPlayer playSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Play.wav");
+            playSound.Play();
         }
 
         public void setWindow(MainWindow mw)

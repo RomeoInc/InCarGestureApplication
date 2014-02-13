@@ -10,7 +10,7 @@
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="01.0*"/>
+            <RowDefinition Height="1.0*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -27,10 +27,14 @@
             </Grid>
         </Grid>
         
+        <Grid Grid.Row="1">
+            <MediaElement x:Name="currentSong" Volume="50" LoadedBehavior="Manual" UnloadedBehavior="Stop"/>
+        </Grid>
+        
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">

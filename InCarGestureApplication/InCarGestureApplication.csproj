@@ -211,6 +211,9 @@
     <Content Include="Menu\Audio\Audio Feedback\Volume Up.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Zoom In.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Zoom Out.wav" />
+    <Content Include="Menu\Audio\Music\Allegro.mp3" />
+    <Content Include="Menu\Audio\Music\Rondo.mp3" />
+    <Content Include="Menu\Audio\Music\The Entertainer.mp3" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate AC text.png" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate AC.png" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate C text.png" />
@@ -256,9 +259,7 @@
     <Resource Include="Menu\Images\Hand Models\Hand Models fill.png" />
     <Resource Include="Menu\Images\Hand Models\leap_motion_logo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Menu\Audio\Music\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

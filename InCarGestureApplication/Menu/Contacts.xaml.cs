@@ -58,6 +58,8 @@ namespace InCarGestureApplication
 
         private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
+            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Menu.wav");
+            menuSound.Play();
             mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
             foreach (IParentObserver observer in observers)
             {
@@ -81,6 +83,10 @@ namespace InCarGestureApplication
 
                 Border nextContact = (Border)ContactList.Children[selected];
                 nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+
+                System.Media.SoundPlayer nextSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Next.wav");
+                nextSound.Play();
+
             }
         }
 
@@ -95,6 +101,10 @@ namespace InCarGestureApplication
 
                 Border nextContact = (Border)ContactList.Children[selected];
                 nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+
+                System.Media.SoundPlayer previousSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Previous.wav");
+                previousSound.Play();
+
             }
         }
 
@@ -108,6 +118,11 @@ namespace InCarGestureApplication
             String contactName = currentContact.Children.OfType<TextBlock>().FirstOrDefault().Text;
             DisplayImageArea.Source = new BitmapImage(new Uri(""+contactImage+"", UriKind.Relative)); 
             DisplayNameArea.Text = "Calling" + contactName;
+            System.Media.SoundPlayer callingSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Calling.wav");
+            callingSound.Play();
+            System.Media.SoundPlayer answerSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\MoshiMoshi.wav");
+            answerSound.Play();
+
             //UIElementCollection ui = this.ContactList.Children.OfType<Grid>().All();
         }
 
@@ -115,6 +130,9 @@ namespace InCarGestureApplication
         {
             DisplayImageArea.Source = null;
             DisplayNameArea.Text = "";
+            System.Media.SoundPlayer endSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hanging Up.wav");
+            endSound.Play();
+
         }
 
         public void setWindow(MainWindow mw)

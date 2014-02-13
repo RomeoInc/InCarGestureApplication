@@ -38,6 +38,8 @@ namespace InCarGestureApplication
 
             InitializeComponent();
             this.window.Children.Add(startScreen);
+            System.Media.SoundPlayer welcomeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hello.wav");
+            welcomeSound.Play();
         }
 
         public void WindowLoaded(object sender, RoutedEventArgs e)

@@ -63,6 +63,8 @@ namespace InCarGestureApplication
         private void Back(CountDetector cd, List<IParentObserver> observers)
         {
             mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
+            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Menu.wav");
+            menuSound.Play();
             foreach (IParentObserver observer in observers)
             {
                 if (observer is IGestureObserver)
@@ -75,37 +77,44 @@ namespace InCarGestureApplication
 
         private void ScrollLeft()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer scrollLeftSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Left.wav");
+            scrollLeftSound.Play();
         }
 
         private void ScrollRight()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer scrollRightSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Right.wav");
+            scrollRightSound.Play();
         }
 
         private void ScrollUp()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer scrollUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Up.wav");
+            scrollUpSound.Play();
         }
 
         private void ScrollDown()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
+            scrollDownSound.Play();
         }
 
         private void ZoomIn()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer zoomInSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Zoom In.wav");
+            zoomInSound.Play();
         }
 
         private void ZoomOut()
         {
-            return;
+            System.Media.SoundPlayer zoomOutSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
+            zoomOutSound.Play();
         }
 
         private void PlaceMarker()
         {
-            throw new NotImplementedException();
+            System.Media.SoundPlayer placeMarkerSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Place Marker.wav");
+            placeMarkerSound.Play();
         }
 
         public void setWindow(MainWindow mw)
