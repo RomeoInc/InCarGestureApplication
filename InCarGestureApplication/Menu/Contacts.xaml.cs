@@ -40,10 +40,10 @@ namespace InCarGestureApplication
                     GoBack(cd, observers);
                     break;
                 case AcceptedGestures.SwipeUp:
-                    NextPerson();
+                    PreviousPerson();
                     break;
                 case AcceptedGestures.SwipeDown:
-                    PreviousPerson();
+                    NextPerson();
                     break;
                 case AcceptedGestures.SelectOption:
                     Call();

@@ -28,7 +28,7 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <MediaElement x:Name="currentSong" Volume="50" LoadedBehavior="Manual" UnloadedBehavior="Stop"/>
+            <MediaElement x:Name="currentSong" Volume ="50" LoadedBehavior="Manual" UnloadedBehavior="Stop"/>
         </Grid>
         
         <Grid Grid.Row="2">
@@ -47,8 +47,9 @@
                 <Grid x:Name="PreviousButton" Grid.Column="0">
                     <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Previous.png "/>
                 </Grid>
-                <Grid x:Name="Play" Grid.Column="1">
-                    <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Pause.png "/>
+                <Grid Grid.Column="1">
+                    <Image x:Name="Pause" HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Pause.png " Visibility="Hidden"/>
+                    <Image x:Name="Play" HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Play.png " Visibility="Visible"/>
                 </Grid>
                 <Grid x:Name="NextButton" Grid.Column="2">
                     <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Next.png "/>

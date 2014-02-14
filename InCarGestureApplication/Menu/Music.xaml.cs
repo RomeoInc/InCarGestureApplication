@@ -22,9 +22,22 @@ namespace InCarGestureApplication
     public partial class Music : UserControl, IGestureObserver
     {
         MainWindow mw;
+        int songNumber;
+        int volume;
+        int volumeScale;
+        bool songState;
+
         public Music()
         {
             InitializeComponent();
+            songState = true;
+            songNumber = 1;
+            volume = 50;
+            volumeScale = 5;
+            currentSong.Dispatcher.Invoke((Action)(() =>
+            {
+                currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
+            }));
         }
 
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers){
@@ -33,10 +46,10 @@ namespace InCarGestureApplication
                     GoBack(cd, observers);
                     break;
                 case AcceptedGestures.SwipeLeft:
-                    NextSong();
+                    PreviousSong();
                     break;
                 case AcceptedGestures.SwipeRight:
-                    PreviousSong();
+                    NextSong();
                     break;
                 case AcceptedGestures.RotateClockwise:
                     TurnUp();
@@ -82,30 +95,77 @@ namespace InCarGestureApplication
 
         private void TurnUp()
         {
-            System.Media.SoundPlayer volumeUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Up.wav");
-            volumeUpSound.Play();
-            currentSong.Dispatcher.Invoke((Action)(() => {
-                currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Allegro.mp3", UriKind.RelativeOrAbsolute);
-                currentSong.Play();
+            currentSong.Dispatcher.Invoke((Action)(() =>
+            {
+                if (!songState)
+                {
+                    System.Media.SoundPlayer pauseSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Pause.wav");
+                    pauseSound.Play();
+                    currentSong.Pause();
+                    Play.Visibility = Visibility.Visible;
+                    Pause.Visibility = Visibility.Hidden;
+                    songState = true;
+                }
+                else
+                {
+                    System.Media.SoundPlayer playSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Play.wav");
+                    playSound.Play();
+                    currentSong.Play();
+                    Pause.Visibility = Visibility.Visible;
+                    Play.Visibility = Visibility.Hidden;
+                    songState = false;
+                }
             }));
+            /*currentSong.Dispatcher.Invoke((Action)(() => {
+                if (volumeScale > VolumeSlider.Minimum && volumeScale < VolumeSlider.Maximum)
+                {
+                    System.Media.SoundPlayer volumeUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Up.wav");
+                    volumeUpSound.Play();
+                    volume = volume + 10;
+                    volumeScale++;
+                    currentSong.Volume = volume;
+                    VolumeSlider.Value = volumeScale;
+                }                
+            }));*/
         }
 
         private void TurnDown()
         {
-            System.Media.SoundPlayer volumeDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
-            volumeDownSound.Play();
+            currentSong.Dispatcher.Invoke((Action)(() => {
+                if (volumeScale > VolumeSlider.Minimum && volumeScale <= VolumeSlider.Maximum)
+                {
+                    System.Media.SoundPlayer volumeDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
+                    volumeDownSound.Play();
+                    volume = volume - 10;
+                    volumeScale--;
+                    currentSong.Volume = volume;
+                    VolumeSlider.Value = volumeScale;
+                }
+            }));
         }
 
         private void Interact()
         {
-            //if music.state == "play"
-            //music.Pause();
-            System.Media.SoundPlayer pauseSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Pause.wav");
-            pauseSound.Play();
-            //else if music.state =="pause"
-            //music.Play();
-            System.Media.SoundPlayer playSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Play.wav");
-            playSound.Play();
+            currentSong.Dispatcher.Invoke((Action)(() => {
+                currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
+
+                if (currentSong.CanPause)
+                {
+                    currentSong.Pause();
+                    Play.Visibility = Visibility.Visible;
+                    Pause.Visibility = Visibility.Hidden;
+                    System.Media.SoundPlayer pauseSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Pause.wav");
+                    pauseSound.Play();
+                }
+                else
+                {
+                    currentSong.Play();
+                    Pause.Visibility = Visibility.Visible;
+                    Play.Visibility = Visibility.Hidden;
+                    System.Media.SoundPlayer playSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Play.wav");
+                    playSound.Play();
+                }
+            }));
         }
 
         public void setWindow(MainWindow mw)
