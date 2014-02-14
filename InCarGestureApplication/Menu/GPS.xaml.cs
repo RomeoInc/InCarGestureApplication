@@ -107,7 +107,7 @@ namespace InCarGestureApplication
 
         private void ZoomOut()
         {
-            System.Media.SoundPlayer zoomOutSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
+            System.Media.SoundPlayer zoomOutSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Zoom Out.wav");
             zoomOutSound.Play();
         }
 

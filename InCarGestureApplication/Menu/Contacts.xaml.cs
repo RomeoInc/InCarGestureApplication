@@ -73,39 +73,43 @@ namespace InCarGestureApplication
 
         private void NextPerson()
         {
-            if (selected < ContactList.Children.Count -1)
-            {
-                Border currentContact = (Border)ContactList.Children[selected];
-                currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            ContactList.Dispatcher.Invoke((Action)(() => {
+                if (selected < ContactList.Children.Count -1)
+                {
+                    Border currentContact = (Border)ContactList.Children[selected];
+                    currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
 
-                selected++;
+                    selected++;
 
-                Border nextContact = (Border)ContactList.Children[selected];
-                nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+                    Border nextContact = (Border)ContactList.Children[selected];
+                    nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
 
-                System.Media.SoundPlayer nextSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Next.wav");
-                nextSound.Play();
+                    System.Media.SoundPlayer nextSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Next.wav");
+                    nextSound.Play();
 
-            }
+                }
+            }));
         }
 
         private void PreviousPerson()
         {
-            if (selected > 0)
-            {
-                Border currentContact = (Border)ContactList.Children[selected];
-                currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
+            ContactList.Dispatcher.Invoke((Action)(() => {
+                if (selected > 0)
+                {
+                    Border currentContact = (Border)ContactList.Children[selected];
+                    currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
             
-                selected--;
+                    selected--;
 
-                Border nextContact = (Border)ContactList.Children[selected];
-                nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
+                    Border nextContact = (Border)ContactList.Children[selected];
+                    nextContact.BorderBrush = new SolidColorBrush(Colors.Black);
 
-                System.Media.SoundPlayer previousSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Previous.wav");
-                previousSound.Play();
+                    System.Media.SoundPlayer previousSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Previous.wav");
+                    previousSound.Play();
 
-            }
+                }
+            }));
         }
 
         private void Call()

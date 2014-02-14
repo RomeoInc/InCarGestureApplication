@@ -95,168 +95,196 @@ namespace InCarGestureApplication
 
         private void PowerUp()
         {
-            if (powerValue < PowerSlider.Maximum)
-            {
-                powerValue++;
-                PowerSlider.Value = powerValue;
-                if (PowerSlider.Value == PowerSlider.Minimum + 1)
+            PowerSlider.Dispatcher.Invoke((Action)(() => {
+                if (powerValue < PowerSlider.Maximum)
                 {
-                    System.Media.SoundPlayer powerOnSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Air Conditioning On.wav");
-                    powerOnSound.Play();
+                    powerValue++;
+                    PowerSlider.Value = powerValue;
+                    if (PowerSlider.Value == PowerSlider.Minimum + 1)
+                    {
+                        System.Media.SoundPlayer powerOnSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Air Conditioning On.wav");
+                        powerOnSound.Play();
+                    }
+                    else
+                    {
+                        System.Media.SoundPlayer powerUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Power Up.wav");
+                        powerUpSound.Play();
+                    }
                 }
-                else
-                {
-                    System.Media.SoundPlayer powerUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Power Up.wav");
-                    powerUpSound.Play();
-                }
-            }
+            }));
         }
 
         private void PowerDown()
         {
-            if (powerValue > PowerSlider.Minimum)
-            {
-                powerValue--;
-                PowerSlider.Value = powerValue;
-                if (PowerSlider.Value == PowerSlider.Minimum)
+            PowerSlider.Dispatcher.Invoke((Action)(() => {
+                if (powerValue > PowerSlider.Minimum)
                 {
-                    System.Media.SoundPlayer powerOffSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Air Conditioning Off.wav");
-                    powerOffSound.Play();
+                    powerValue--;
+                    PowerSlider.Value = powerValue;
+                    if (PowerSlider.Value == PowerSlider.Minimum)
+                    {
+                        System.Media.SoundPlayer powerOffSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Air Conditioning Off.wav");
+                        powerOffSound.Play();
+                    }
+                    else
+                    {
+                        System.Media.SoundPlayer powerDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Power Down.wav");
+                        powerDownSound.Play();
+                    }
                 }
-                else
-                {
-                    System.Media.SoundPlayer powerDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Power Down.wav");
-                    powerDownSound.Play();
-                }
-            }
+            }));
         }
 
         private void TemperatureUp()
         {
             TemperatureSlider.Dispatcher.Invoke((Action)(() => {
-            if (tempValue < TemperatureSlider.Maximum)
-            {
-                tempValue++;
-                TemperatureSlider.Value = tempValue;
-                System.Media.SoundPlayer tempUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Up.wav");
-                tempUpSound.Play();
-            }
+                if (tempValue < TemperatureSlider.Maximum)
+                {
+                    tempValue++;
+                    TemperatureSlider.Value = tempValue;
+                    System.Media.SoundPlayer tempUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Up.wav");
+                    tempUpSound.Play();
+                }
             }));
         }
 
         private void TemperatureDown()
         {
-            if (powerValue > PowerSlider.Minimum)
-            {
-                powerValue--;
-                PowerSlider.Value = powerValue;
-                System.Media.SoundPlayer tempDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Up.wav");
-                tempDownSound.Play();
-            }
+            TemperatureSlider.Dispatcher.Invoke((Action)(() => {
+                if (tempValue > TemperatureSlider.Minimum)
+                {
+                    tempValue--;
+                    TemperatureSlider.Value = tempValue;
+                    System.Media.SoundPlayer tempDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Up.wav");
+                    tempDownSound.Play();
+                }
+            }));
         }
 
         private void DriverWindowUp()
         {
-            if (driverState < DriverSlider.Maximum)
-            {
-                driverState++;
-                DriverSlider.Value = driverState;
-                System.Media.SoundPlayer driverWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Up.wav");
-                driverWindowUpSound.Play();
-            }
+            DriverSlider.Dispatcher.Invoke((Action)(() => {
+                if (driverState < DriverSlider.Maximum)
+                {
+                    driverState++;
+                    DriverSlider.Value = driverState;
+                    System.Media.SoundPlayer driverWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Up.wav");
+                    driverWindowUpSound.Play();
+                }
+            }));
         }
 
         private void DriverWindowDown()
         {
-            if (driverState > DriverSlider.Minimum)
-            {
-                driverState--;
-                DriverSlider.Value = driverState;
-                System.Media.SoundPlayer driverWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
-                driverWindowDownSound.Play();
-            }
+            DriverSlider.Dispatcher.Invoke((Action)(() => {
+                if (driverState > DriverSlider.Minimum)
+                {
+                    driverState--;
+                    DriverSlider.Value = driverState;
+                    System.Media.SoundPlayer driverWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
+                    driverWindowDownSound.Play();
+                }
+            }));
         }
 
         private void PassengerWindowOpen()
         {
-            if (passengerState < PassengerSlider.Maximum)
-            {
-                passengerState++;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer PassengerWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Up.wav");
-                PassengerWindowUpSound.Play();
-            }
+            PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                if (passengerState < PassengerSlider.Maximum)
+                {
+                    passengerState++;
+                    PassengerSlider.Value = passengerState;
+                    System.Media.SoundPlayer PassengerWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Up.wav");
+                    PassengerWindowUpSound.Play();
+                }
+            }));
         }
 
         private void PassengerWindowClosed()
         {
-            if (passengerState > PassengerSlider.Minimum)
-            {
-                passengerState--;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer PassengerWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Down.wav");
-                PassengerWindowDownSound.Play();
-
-            }
+            PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                if (passengerState > PassengerSlider.Minimum)
+                {
+                    passengerState--;
+                    PassengerSlider.Value = passengerState;
+                    System.Media.SoundPlayer PassengerWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Down.wav");
+                    PassengerWindowDownSound.Play();
+                }
+            }));
         }
 
         private void BothWindowsOpen()
         {
-            if (driverState < DriverSlider.Maximum && passengerState < PassengerSlider.Maximum)
-            {
-                driverState++;
-                passengerState++;
-                DriverSlider.Value = driverState;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer BothWindowsUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Both Windows Up.wav");
-                BothWindowsUpSound.Play();
-            }
+            DriverSlider.Dispatcher.Invoke((Action)(() => {
+                PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                    if (driverState < DriverSlider.Maximum && passengerState < PassengerSlider.Maximum)
+                    {
+                        driverState++;
+                        passengerState++;
+                        DriverSlider.Value = driverState;
+                        PassengerSlider.Value = passengerState;
+                        System.Media.SoundPlayer BothWindowsUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Both Windows Up.wav");
+                        BothWindowsUpSound.Play();
+                    }
+                }));
+            }));
             
-            else if (driverState < DriverSlider.Maximum)
-            {
-                driverState++;
-                DriverSlider.Value = driverState;
-                System.Media.SoundPlayer driverWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Up.wav");
-                driverWindowUpSound.Play();
-            }
+            DriverSlider.Dispatcher.Invoke((Action)(() => {
+                if (driverState < DriverSlider.Maximum)
+                {
+                    driverState++;
+                    DriverSlider.Value = driverState;
+                    System.Media.SoundPlayer driverWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Up.wav");
+                    driverWindowUpSound.Play();
+                }
+            }));
             
-            else if (passengerState < PassengerSlider.Maximum)
-            {
-                passengerState++;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer PassengerWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Up.wav");
-                PassengerWindowUpSound.Play();
-            }
-
+            PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                if (passengerState < PassengerSlider.Maximum)
+                {
+                    passengerState++;
+                    PassengerSlider.Value = passengerState;
+                    System.Media.SoundPlayer PassengerWindowUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Up.wav");
+                    PassengerWindowUpSound.Play();
+                }
+            }));
         }
 
         private void BothWindowsClosed()
         {
-            if (driverState > DriverSlider.Minimum && passengerState > PassengerSlider.Minimum)
-            {
-                driverState--;
-                passengerState--;
-                DriverSlider.Value = driverState;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer BothWindowsDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Both Windows Down.wav");
-                BothWindowsDownSound.Play();
-            }
+            DriverSlider.Dispatcher.Invoke((Action)(() => {
+                PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                    if (driverState > DriverSlider.Minimum && passengerState > PassengerSlider.Minimum)
+                    {
+                        driverState--;
+                        passengerState--;
+                        DriverSlider.Value = driverState;
+                        PassengerSlider.Value = passengerState;
+                        System.Media.SoundPlayer BothWindowsDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Both Windows Down.wav");
+                        BothWindowsDownSound.Play();
+                    }
+                }));
+            }));
+
+            DriverSlider.Dispatcher.Invoke((Action)(() => {          
+                if (driverState > DriverSlider.Minimum)
+                {
+                    driverState--;
+                    DriverSlider.Value = driverState;
+                    System.Media.SoundPlayer driverWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
+                    driverWindowDownSound.Play();
+                }
+            }));
             
-            if (driverState > DriverSlider.Minimum)
-            {
-                driverState--;
-                DriverSlider.Value = driverState;
-                System.Media.SoundPlayer driverWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
-                driverWindowDownSound.Play();
-            }
-            
-            if (passengerState > PassengerSlider.Minimum)
-            {
-                passengerState--;
-                PassengerSlider.Value = passengerState;
-                System.Media.SoundPlayer PassengerWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Down.wav");
-                PassengerWindowDownSound.Play();
-            }
+            PassengerSlider.Dispatcher.Invoke((Action)(() => {
+                if (passengerState > PassengerSlider.Minimum)
+                {
+                    passengerState--;
+                    PassengerSlider.Value = passengerState;
+                    System.Media.SoundPlayer PassengerWindowDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Passenger Window Down.wav");
+                    PassengerWindowDownSound.Play();
+                }
+            }));
         }
 
         public void setWindow(MainWindow mw)
