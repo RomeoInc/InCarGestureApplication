@@ -44,43 +44,43 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Border BorderThickness="5" Grid.Row="0">
+                <Border BorderThickness="3" Grid.Row="0" Opacity="0.5">
                     <Grid x:Name="Arisa">
                         <Image Source="Images/Contacts/Arisa.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Arisa" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5"  Grid.Row="1">
+                <Border BorderThickness="3"  Grid.Row="1" Opacity="0.5">
                     <Grid x:Name="Barry">
                         <Image Source="Images/Contacts/Barry.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Barry" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5" Grid.Row="2" >
+                <Border BorderThickness="3" Grid.Row="2" Opacity="0.5">
                     <Grid x:Name="Gary" >
                         <Image Source="Images/Contacts/Gary.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Gary" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5" Grid.Row="3" >
+                <Border BorderThickness="3" Grid.Row="3" Opacity="0.5">
                     <Grid x:Name="Gerard">
                         <Image Source="Images/Contacts/Gerard.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Gerard" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5"  Grid.Row="4">
+                <Border BorderThickness="3"  Grid.Row="4" Opacity="0.5">
                     <Grid x:Name="Mark">
                         <Image Source="Images/Contacts/Mark.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Mark" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5"  Grid.Row="5">
+                <Border BorderThickness="3"  Grid.Row="5" Opacity="0.5">
                     <Grid x:Name="Mehrab">
                         <Image Source="Images/Contacts/Mehrab.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Mehrab" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-                <Border BorderThickness="5" Grid.Row="6">
+                <Border BorderThickness="3" Grid.Row="6" Opacity="0.5">
                     <Grid x:Name="Stuart">
                         <Image Source="Images/Contacts/Stuart.jpg " VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Stuart" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold"/>
@@ -91,7 +91,7 @@
                 <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="268" Margin="160,50,0,0" VerticalAlignment="Top" Width="283">
                     <Image x:Name="DisplayImageArea" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Border>
-                <TextBlock x:Name="DisplayNameArea" TextWrapping="Wrap" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold" Margin="160,343,172,44"/>
+                <TextBlock x:Name="DisplayNameArea" TextWrapping="Wrap" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="30" FontWeight="SemiBold" Margin="160,323,172,64"/>
             </Grid>
         </Grid>
     </Grid>

@@ -42,83 +42,8 @@ namespace InCarGestureApplication
         public void LeaveWorkspace(int dummyToAllowOverriding) { }
 
         // Count selection updates
-        public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) 
-        {
-            /*switch (count)
-            {
-                case 1:
-                    foreach (IParentObserver observer in observers)
-                    {
-                        if (observer is IGestureObserver)
-                        {
-                            IGestureObserver ig = (IGestureObserver)observer;
-                            cd.UnregisterObserver(ig);
-                            break;
-                        }
-                    }
-                    cd.RegisterObserver(musicScreen);
-                    mw.Dispatcher.Invoke((Action)(() => {
-                        //mw.window.Children.Clear();
-                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
-                        mw.window.Children.Add(musicScreen);
-                    }));
-                    break;
-                case 2:
-                    foreach (IParentObserver observer in observers)
-                    {
-                        if (observer is IGestureObserver)
-                        {
-                            IGestureObserver ig = (IGestureObserver)observer;
-                            cd.UnregisterObserver(ig);
-                            break;
-                        }
-                    }
-                    cd.RegisterObserver(gpsScreen);
-                    mw.Dispatcher.Invoke((Action)(() => {
-                        //mw.window.Children.Clear();
-                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
-                        mw.window.Children.Add(gpsScreen);
-                    }));
-                    break;
-                case 3:
-                    foreach (IParentObserver observer in observers)
-                    {
-                        if (observer is IGestureObserver)
-                        {
-                            IGestureObserver ig = (IGestureObserver)observer;
-                            cd.UnregisterObserver(ig);
-                            break;
-                        }
-                    }
-                    cd.RegisterObserver(contactScreen);
-                    mw.Dispatcher.Invoke((Action)(() => {
-                        //mw.window.Children.Clear();
-                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
-                        mw.window.Children.Add(contactScreen);
-                    }));
-                    break;
-                case 4:
-                    foreach (IParentObserver observer in observers)
-                    {
-                        if (observer is IGestureObserver)
-                        {
-                            IGestureObserver ig = (IGestureObserver)observer;
-                            cd.UnregisterObserver(ig);
-                            break;
-                        }
-                    }
-                    cd.RegisterObserver(extrasScreen);
-                    mw.Dispatcher.Invoke((Action)(() =>
-                    {
-                        //mw.window.Children.Clear();
-                        mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
-                        mw.window.Children.Add(extrasScreen);
-                    }));
-                    break;
-                default:
-                    break;
-            }*/
-        }
+        public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) {}
+
         public void CountStop() { }
         public void CountComplete(Leap.Vector pos, ROI roi, DateTime time, int count, CountDetector cd, List<IParentObserver> observers)
         { 
