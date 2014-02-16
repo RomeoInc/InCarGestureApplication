@@ -215,6 +215,16 @@
     <Content Include="Menu\Audio\Music\Allegro.mp3" />
     <Content Include="Menu\Audio\Music\Rondo.mp3" />
     <Content Include="Menu\Audio\Music\The Entertainer.mp3" />
+    <Resource Include="Menu\Images\Map\Default Zoom.png" />
+    <Resource Include="Menu\Images\Map\Default.png" />
+    <Resource Include="Menu\Images\Map\Down Zoom.png" />
+    <Resource Include="Menu\Images\Map\Down.png" />
+    <Resource Include="Menu\Images\Map\Left Zoom.png" />
+    <Resource Include="Menu\Images\Map\Left.png" />
+    <Resource Include="Menu\Images\Map\Right Zoom.png" />
+    <Resource Include="Menu\Images\Map\Right.png" />
+    <Resource Include="Menu\Images\Map\Up Zoom.png" />
+    <Resource Include="Menu\Images\Map\Up.png" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate AC text.png" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate AC.png" />
     <Resource Include="Menu\Images\Hand Models\1 finger\Rotate C text.png" />

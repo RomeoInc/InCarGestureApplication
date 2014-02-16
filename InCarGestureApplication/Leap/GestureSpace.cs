@@ -10,17 +10,17 @@ namespace Leap
         /// <summary>
         /// Width of the gesture space, in mm.
         /// </summary>
-        public const int Width = 160;
+        public const int Width = 120;
 
         /// <summary>
         /// Height of the gesture space, in mm.
         /// </summary>
-        public const int Height = 160;
+        public const int Height = 100;
 
         /// <summary>
         /// Left boundary of the gesture space, relative to the Leap origin.
         /// </summary>
-        public static int Left = -80;
+        public static int Left = -60;
 
         /// <summary>
         /// Right boundary of the gesture space, relative to the Leap origin.

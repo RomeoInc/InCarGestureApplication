@@ -28,8 +28,8 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Border x:Name="ImageArea" BorderBrush="Gray" BorderThickness="3" HorizontalAlignment="Center" Height="420" VerticalAlignment="Center" Width="550">
-                <Image Source="Images/Glasgow.png " Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Border BorderBrush="Gray" BorderThickness="3" HorizontalAlignment="Center" Height="420" VerticalAlignment="Center" Width="550">
+                <Image  x:Name="MapArea" Source="Images/Map/Default.png " Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
             
         </Grid>
