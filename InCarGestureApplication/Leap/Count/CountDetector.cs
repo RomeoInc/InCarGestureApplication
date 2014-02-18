@@ -53,6 +53,12 @@ namespace Leap.Gestures.Count
         public const int READY_FRAMES = 10;
 
         /// <summary>
+        /// How many frames to discard before starting to track
+        /// particular gestures.
+        /// </summary>
+        public const int GESTURE_FRAMES = 60;
+
+        /// <summary>
         /// Lowest error in finger count which is acceptable. This is
         /// an amount above the count value, e.g. if the count gesture
         /// is for two fingers, a gesture is considered ongoing so long
@@ -74,13 +80,12 @@ namespace Leap.Gestures.Count
         /// <summary>
         /// Minimum speed for a swipe gesture.
         /// </summary>
-        public const int SWIPE_SPEED = 1300;
+        public const int SWIPE_SPEED = 1000;
 
         /// <summary>
         /// Minimum speed for a swipe gesture.
         /// </summary>
-        public const int POWER_SWIPE = 2100;
-
+        public const int POWER_SWIPE = 1500;
         /// <summary>
         /// Minimum x direction for the swipe left gesture.
         /// </summary>
@@ -133,6 +138,7 @@ namespace Leap.Gestures.Count
         private int countTotal;
         private int activeHandId;
         private int discardedFrames;
+        private int ignoredFrames;
         private LeapInterface leap;
        // private int activeGroup;
 
@@ -143,6 +149,7 @@ namespace Leap.Gestures.Count
             selectionState = CountSelectionState.Idle;
             activeHandId = -1;
             discardedFrames = 0;
+            ignoredFrames = 0;
             this.leap = leap;
 
            /* // Initialise groups and ROIs
@@ -214,108 +221,148 @@ namespace Leap.Gestures.Count
                     break;
             }
 
-            // Check for swipe gestures
-            if (SwipeLeft(frame) != AcceptedGestures.InvalidGesture)
+            if (ignoredFrames >= GESTURE_FRAMES)
             {
-
-                foreach (IParentObserver observer in observers)
+                // Check for swipe gestures
+                if (SwipeLeft(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeLeft(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(SwipeLeft(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (SwipeRight(frame) != AcceptedGestures.InvalidGesture)
-            {
-                foreach (IParentObserver observer in observers)
+                if (SwipeRight(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeRight(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(SwipeRight(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (SwipeUp(frame) != AcceptedGestures.InvalidGesture)
-            {
-                foreach (IParentObserver observer in observers)
+                if (SwipeUp(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeUp(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(SwipeUp(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (SwipeDown(frame) != AcceptedGestures.InvalidGesture)
-            {
-
-                foreach (IParentObserver observer in observers)
+                if (SwipeDown(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SwipeDown(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(SwipeDown(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (ZoomIn(frame) != AcceptedGestures.InvalidGesture)
-            {
-
-                foreach (IParentObserver observer in observers)
+                if (ZoomIn(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(ZoomIn(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(ZoomIn(frame), this, observers);
+                        }
                     }
                 }
-            }
 
-            if (ZoomOut(frame) != AcceptedGestures.InvalidGesture)
-            {
-
-                foreach (IParentObserver observer in observers)
+                if (ZoomOut(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(ZoomOut(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(ZoomOut(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (Rotate(frame) != AcceptedGestures.InvalidGesture)
-            {
-
-                foreach (IParentObserver observer in observers)
+                if (Rotate(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(Rotate(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(Rotate(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
-            }
 
-            if (SelectOption(frame) != AcceptedGestures.InvalidGesture)
-            {
-
-                foreach (IParentObserver observer in observers)
+                if (WindowUp(frame) != AcceptedGestures.InvalidGesture)
                 {
-                    if (observer is IGestureObserver)
+
+                    foreach (IParentObserver observer in observers)
                     {
-                        IGestureObserver ig = (IGestureObserver)observer;
-                        ig.GestureComplete(SelectOption(frame), this, observers);
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(WindowUp(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
                     }
                 }
+
+                if (WindowDown(frame) != AcceptedGestures.InvalidGesture)
+                {
+
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(WindowDown(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
+                    }
+                }                
+
+                if (SelectOption(frame) != AcceptedGestures.InvalidGesture)
+                {
+
+                    foreach (IParentObserver observer in observers)
+                    {
+                        if (observer is IGestureObserver)
+                        {
+                            IGestureObserver ig = (IGestureObserver)observer;
+                            ig.GestureComplete(SelectOption(frame), this, observers);
+                            ignoredFrames = 0;
+                        }
+                    }
+                }
+                
             }
+            ignoredFrames++;
 
         }
 
@@ -661,12 +708,7 @@ namespace Leap.Gestures.Count
         {
             GestureList gestures = frame.Gestures();
 
-            List<Hand> hands = DetectedHands(frame.Hands);
-            if (hands.Count > 0)
-            {
-                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
-
-                if (gestures.Count > 0)
+            if (gestures.Count > 0)
                 {
                     foreach (Gesture gesture in gestures)
                     {
@@ -674,31 +716,7 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= POWER_SWIPE && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
-                            {
-                                Log("Gesture: Open Both Windows");
-                                gestureType = AcceptedGestures.BothOpen;
-                                return gestureType;
-                            }
-
-                            else if (swipe.Speed >= POWER_SWIPE && swipe.Direction.y >= SWIPE_UP_DIRECTION)
-                            {
-                                if (swipe.Position.x >= 0)
-                                {
-                                    Log("Gesture: Open Driver Window");
-                                    gestureType = AcceptedGestures.DriverOpen;
-                                    return gestureType;
-                                }
-                                else if (swipe.Position.x < 0)
-                                {
-                                    Log("Gesture: Open Passenger Window");
-                                    gestureType = AcceptedGestures.PassengerOpen;
-                                    return gestureType;
-                                }
-
-                            }
-
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 Log("Gesture: Swipe Up");
                                 gestureType = AcceptedGestures.SwipeUp;
@@ -707,7 +725,6 @@ namespace Leap.Gestures.Count
                         }
                     }
                 }
-            }
             return AcceptedGestures.InvalidGesture;
         }
 
@@ -715,54 +732,23 @@ namespace Leap.Gestures.Count
         {
             GestureList gestures = frame.Gestures();
 
-            List<Hand> hands = DetectedHands(frame.Hands);
-            if (hands.Count > 0)
+            if (gestures.Count > 0)
             {
-                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
-
-                if (gestures.Count > 0)
+                foreach (Gesture gesture in gestures)
                 {
-                    foreach (Gesture gesture in gestures)
+                    if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
                     {
-                        if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
+                        SwipeGesture swipe = new SwipeGesture(gesture);
+                        if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
                         {
-                            SwipeGesture swipe = new SwipeGesture(gesture);
-
-                            if (swipe.Speed >= POWER_SWIPE && fingers.Count == 2 && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
-                            {
-                                Log("Gesture: Close Both Windows");
-                                gestureType = AcceptedGestures.BothClosed;
-                                return gestureType;
-                            }
-
-                            else if (swipe.Speed >= POWER_SWIPE && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
-                            {
-                                if (swipe.Position.x >= 0)
-                                {
-                                    Log("Gesture: Open Driver Window");
-                                    gestureType = AcceptedGestures.DriverClosed;
-                                    return gestureType;
-                                }
-                                else if (swipe.Position.x < 0)
-                                {
-                                    Log("Gesture: Open Passenger Window");
-                                    gestureType = AcceptedGestures.PassengerClosed;
-                                    return gestureType;
-                                }
-
-                            }
-
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
-                            {
-                                Log("Gesture: Swipe Down");
-                                gestureType = AcceptedGestures.SwipeDown;
-                                return gestureType;
-                            }
+                            Log("Gesture: Swipe Down");
+                            gestureType = AcceptedGestures.SwipeDown;
+                            return gestureType;
                         }
                     }
                 }
             }
-            return AcceptedGestures.InvalidGesture;
+        return AcceptedGestures.InvalidGesture;
         }
 
         private AcceptedGestures ZoomIn(Frame frame)
@@ -826,8 +812,102 @@ namespace Leap.Gestures.Count
                         else
                         {
                             Log("Gesture: Anti-Clockwise Rotation");
-                            gestureType = AcceptedGestures.SwipeOut;
+                            gestureType = AcceptedGestures.RotateAntiClockwise;
                             return gestureType;
+                        }
+                    }
+                }
+            }
+            return AcceptedGestures.InvalidGesture;
+        }
+
+        private AcceptedGestures WindowUp(Frame frame)
+        {
+            GestureList gestures = frame.Gestures();
+
+            List<Hand> hands = DetectedHands(frame.Hands);
+            if (hands.Count > 0)
+            {
+                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
+
+                if (gestures.Count > 0)
+                {
+                    foreach (Gesture gesture in gestures)
+                    {
+                        if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
+                        {
+                            SwipeGesture swipe = new SwipeGesture(gesture);
+
+                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            {
+                                Log("Gesture: Open Both Windows");
+                                gestureType = AcceptedGestures.BothOpen;
+                                return gestureType;
+                            }
+
+                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            {
+                                if (swipe.Position.x >= 0)
+                                {
+                                    Log("Gesture: Open Driver Window");
+                                    gestureType = AcceptedGestures.DriverOpen;
+                                    return gestureType;
+                                }
+                                else if (swipe.Position.x < 0)
+                                {
+                                    Log("Gesture: Open Passenger Window");
+                                    gestureType = AcceptedGestures.PassengerOpen;
+                                    return gestureType;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            return AcceptedGestures.InvalidGesture;
+        }
+
+        private AcceptedGestures WindowDown(Frame frame)
+        {
+            GestureList gestures = frame.Gestures();
+            
+            List<Hand> hands = DetectedHands(frame.Hands);
+            if (hands.Count > 0)
+            {
+                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
+
+                if (gestures.Count > 0)
+                {
+                    foreach (Gesture gesture in gestures)
+                    {
+                        if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
+                        {
+                            SwipeGesture swipe = new SwipeGesture(gesture);
+
+                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
+                            {
+                                Log("Gesture: Close Both Windows");
+                                gestureType = AcceptedGestures.BothClosed;
+                                return gestureType;
+                            }
+
+                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
+                            {
+                                if (swipe.Position.x >= 0)
+                                {
+                                    Log("Gesture: Open Driver Window");
+                                    gestureType = AcceptedGestures.DriverClosed;
+                                    return gestureType;
+                                }
+                                else if (swipe.Position.x < 0)
+                                {
+                                    Log("Gesture: Open Passenger Window");
+                                    gestureType = AcceptedGestures.PassengerClosed;
+                                    return gestureType;
+                                }
+
+                            }
                         }
                     }
                 }

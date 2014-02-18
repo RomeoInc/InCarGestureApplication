@@ -179,6 +179,7 @@
     <Content Include="Menu\Audio\Audio Feedback\Both Windows Down.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Both Windows Up.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Calling.wav" />
+    <Content Include="Menu\Audio\Audio Feedback\Counting.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Driver Window Down.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Driver Window Up.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Ending Call.wav" />
@@ -187,10 +188,12 @@
     <Content Include="Menu\Audio\Audio Feedback\Hanging Up.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Hello.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Home.wav" />
+    <Content Include="Menu\Audio\Audio Feedback\In Range.wav" />
     <Content Include="Menu\Audio\Audio Feedback\MoshiMoshi.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Music.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Next Song.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Next.wav" />
+    <Content Include="Menu\Audio\Audio Feedback\Out Of Range.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Passenger Window Down.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Passenger Window Up.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Pause.wav" />
@@ -202,6 +205,7 @@
     <Content Include="Menu\Audio\Audio Feedback\Previous Song.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Previous.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Ringing.wav" />
+    <Content Include="Menu\Audio\Audio Feedback\Roll.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Scroll Down.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Scroll Left.wav" />
     <Content Include="Menu\Audio\Audio Feedback\Scroll Right.wav" />

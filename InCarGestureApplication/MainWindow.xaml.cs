@@ -21,25 +21,26 @@ namespace InCarGestureApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        private StartMenu startScreen;
-        private Music musicScreen;
+        public StartMenu startScreen;
+        /*private Music musicScreen;
         private GPS gpsScreen;
         private Contacts contactScreen;
-        private Extras extrasScreen;
+        private Extras extrasScreen;*/
         
         public MainWindow()
         {
             startScreen = new StartMenu();
             startScreen.setWindow(this);
-            musicScreen = new Music();
+            /*musicScreen = new Music();
             gpsScreen = new GPS();
             contactScreen = new Contacts();
-            extrasScreen = new Extras();
+            extrasScreen = new Extras();*/
 
             InitializeComponent();
             this.window.Children.Add(startScreen);
             System.Media.SoundPlayer welcomeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hello.wav");
             welcomeSound.Play();
+            //System.Threading.Thread.Sleep(1500);
         }
 
         public void WindowLoaded(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace InCarGestureApplication
             GestureSpace space = new GestureSpace();
          
             Program.InitialiseCount(leap, space, startScreen);
+            //System.Threading.Thread.Sleep(1000);
 
             Console.ReadLine();
 

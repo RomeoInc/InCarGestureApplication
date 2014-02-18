@@ -33,7 +33,7 @@ namespace InCarGestureApplication
             paused = true;
             songNumber = 1;
             volume = 50;
-            volumeScale = 5;
+            volumeScale = 6;
             currentSong.Dispatcher.Invoke((Action)(() =>
             {
                 currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
@@ -168,7 +168,7 @@ namespace InCarGestureApplication
         private void TurnUp()
         {
            currentSong.Dispatcher.Invoke((Action)(() => {
-                if (volumeScale > VolumeSlider.Minimum && volumeScale < VolumeSlider.Maximum)
+                if (volumeScale < VolumeSlider.Maximum)
                 {
                     System.Media.SoundPlayer volumeUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Up.wav");
                     volumeUpSound.Play();
@@ -183,7 +183,7 @@ namespace InCarGestureApplication
         private void TurnDown()
         {
             currentSong.Dispatcher.Invoke((Action)(() => {
-                if (volumeScale > VolumeSlider.Minimum && volumeScale <= VolumeSlider.Maximum)
+                if (volumeScale > VolumeSlider.Minimum)
                 {
                     System.Media.SoundPlayer volumeDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
                     volumeDownSound.Play();

@@ -38,16 +38,26 @@ namespace InCarGestureApplication
 
         }
 
-        public void EnterWorkspace(int hands, int fingers) { }
-        public void LeaveWorkspace(int dummyToAllowOverriding) { }
+        public void EnterWorkspace(int hands, int fingers) 
+        {
+            System.Media.SoundPlayer inRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\In Range.wav");
+            inRangeSound.Play();
+        }
+        public void LeaveWorkspace(int dummyToAllowOverriding) 
+        {
+            System.Media.SoundPlayer outOfRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Out Of Range.wav");
+            outOfRangeSound.Play();
+
+        }
 
         // Count selection updates
-        public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) {}
+        public void CountStart(Leap.Vector pos, ROI roi, int count, CountDetector cd, List<IParentObserver> observers) 
+        {}
 
         public void CountStop() { }
         public void CountComplete(Leap.Vector pos, ROI roi, DateTime time, int count, CountDetector cd, List<IParentObserver> observers)
         { 
-        switch (count)
+            switch (count)
             {
                 case 1:
                     foreach (IParentObserver observer in observers)
@@ -87,6 +97,7 @@ namespace InCarGestureApplication
                         //mw.window.Children.Clear();
                         mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
                         mw.window.Children.Add(gpsScreen);
+                        //gpsScreen.setWindow(mw);
                     }));
                     break;
                 case 3:
@@ -133,7 +144,8 @@ namespace InCarGestureApplication
                     break;
             }
         }
-        public void CountProgress(long dwellTime, ROI roi) { }
+        public void CountProgress(long dwellTime, ROI roi) 
+        {}
 
         // Cursor position update
         public void CursorUpdate(Leap.Vector pos, int count, int edge) { }

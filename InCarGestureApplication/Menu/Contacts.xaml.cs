@@ -23,13 +23,13 @@ namespace InCarGestureApplication
     {
         MainWindow mw;
         int selected;
-        Stopwatch stopWatch;
+        //Stopwatch stopWatch;
 
         public Contacts()
         {
             selected = 3;
             InitializeComponent();
-            Stopwatch stopWatch = new Stopwatch();
+            //Stopwatch stopWatch = new Stopwatch();
 
             Border defaultContact = (Border)ContactList.Children[selected];
             defaultContact.BorderBrush = new SolidColorBrush(Colors.Black);

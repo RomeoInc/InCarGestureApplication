@@ -1,4 +1,5 @@
 ﻿using Leap.Gestures.Count;
+using InCarGestureApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,8 +73,9 @@ namespace InCarGestureApplication
             {
                 mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
             }));
-            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Menu.wav");
+            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Home.wav");
             menuSound.Play();
+            //startScreen 
             foreach (IParentObserver observer in observers)
             {
                 if (observer is IGestureObserver)
@@ -178,7 +180,7 @@ namespace InCarGestureApplication
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Down.png", UriKind.RelativeOrAbsolute));
                     }));
-                    vertical++;
+                    vertical--;
                     System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
                     scrollDownSound.Play();
                 }
@@ -189,7 +191,7 @@ namespace InCarGestureApplication
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Default.png", UriKind.RelativeOrAbsolute));
                     }));
-                    horizontal++;
+                    horizontal--;
                     System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
                     scrollDownSound.Play();
                 }

@@ -43,10 +43,10 @@ namespace InCarGestureApplication
                 case AcceptedGestures.GoBack:
                     GoBack(cd, observers);
                     break;
-                case AcceptedGestures.SwipeLeft:
+                case AcceptedGestures.SwipeRight:
                     PowerUp();
                     break;
-                case AcceptedGestures.SwipeRight:
+                case AcceptedGestures.SwipeLeft:
                     PowerDown();
                     break;
                 case AcceptedGestures.RotateAntiClockwise:
@@ -62,10 +62,10 @@ namespace InCarGestureApplication
                     DriverWindowUp();
                     break;
                 case AcceptedGestures.PassengerOpen:
-                    PassengerWindowOpen();
+                    PassengerWindowDown();
                     break;
                 case AcceptedGestures.PassengerClosed:
-                    PassengerWindowClosed();
+                    PassengerWindowUp();
                     break;
                 case AcceptedGestures.BothOpen:
                     BothWindowsOpen();
@@ -155,7 +155,7 @@ namespace InCarGestureApplication
                 {
                     tempValue--;
                     TemperatureSlider.Value = tempValue;
-                    System.Media.SoundPlayer tempDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Up.wav");
+                    System.Media.SoundPlayer tempDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Temperature Down.wav");
                     tempDownSound.Play();
                 }
             }));
@@ -187,7 +187,7 @@ namespace InCarGestureApplication
             }));
         }
 
-        private void PassengerWindowOpen()
+        private void PassengerWindowUp()
         {
             PassengerSlider.Dispatcher.Invoke((Action)(() => {
                 if (passengerState < PassengerSlider.Maximum)
@@ -200,7 +200,7 @@ namespace InCarGestureApplication
             }));
         }
 
-        private void PassengerWindowClosed()
+        private void PassengerWindowDown()
         {
             PassengerSlider.Dispatcher.Invoke((Action)(() => {
                 if (passengerState > PassengerSlider.Minimum)
