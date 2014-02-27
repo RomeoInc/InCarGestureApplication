@@ -27,10 +27,9 @@ namespace InCarGestureApplication
 
         public Contacts()
         {
-            selected = 3;
             InitializeComponent();
             //Stopwatch stopWatch = new Stopwatch();
-
+            selected = 3;
             Border defaultContact = (Border)ContactList.Children[selected];
             defaultContact.BorderBrush = new SolidColorBrush(Colors.Black);
             defaultContact.Opacity = 1;
@@ -40,19 +39,19 @@ namespace InCarGestureApplication
         {
             switch (type)
             {
-                case AcceptedGestures.GoBack:
+               /* case AcceptedGestures.GoBack:
                     GoBack(cd, observers);
-                    break;
+                    break;*/
                 case AcceptedGestures.SwipeUp:
                     PreviousPerson();
                     break;
                 case AcceptedGestures.SwipeDown:
                     NextPerson();
                     break;
-                case AcceptedGestures.RotateClockwise://SelectOption:
+                case AcceptedGestures.SwipeRight://SelectOption:
                     Call();
                     break;
-                case AcceptedGestures.AnswerCall:
+                case AcceptedGestures.SwipeLeft:
                     HangUp();
                     break;
                 default:
@@ -159,14 +158,19 @@ namespace InCarGestureApplication
 
         private void HangUp()
         {
+            System.Media.SoundPlayer endSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hanging Up.wav");
+            endSound.Play();
             DisplayNameArea.Dispatcher.Invoke((Action)(() =>
             {
+                DisplayNameArea.Text = "Ending Call";
+            }));
+            System.Threading.Thread.Sleep(1500);
+            DisplayNameArea.Dispatcher.Invoke((Action)(() =>
+                {
                 DisplayImageArea.Source = null;
                 DisplayNameArea.Text = "";
             }));
-            System.Media.SoundPlayer endSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hanging Up.wav");
-            endSound.Play();
-
+            
         }
 
         public void setWindow(MainWindow mw)

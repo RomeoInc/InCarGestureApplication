@@ -37,14 +37,16 @@ namespace InCarGestureApplication
             currentSong.Dispatcher.Invoke((Action)(() =>
             {
                 currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
+                DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
+                DisplaySongArea.Text = "Mozart - Allegro";
             }));
         }
 
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers){
             switch(type){
-                case AcceptedGestures.GoBack:
+               /* case AcceptedGestures.GoBack:
                     GoBack(cd, observers);
-                    break;
+                    break;*/
                 case AcceptedGestures.SwipeLeft:
                     PreviousSong();
                     break;
@@ -67,7 +69,7 @@ namespace InCarGestureApplication
 
         private void GoBack(CountDetector cd, List<IParentObserver> observers)
         {
-            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Driver Window Down.wav");
+            System.Media.SoundPlayer menuSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Home.wav");
             menuSound.Play();
             mw.window.Children.Remove(mw.window.Children[mw.window.Children.Count - 1]);
             foreach (IParentObserver observer in observers)
@@ -89,6 +91,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Rondo.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Mozart - Rondo";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;
@@ -101,6 +105,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\The Entertainer.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\ScottJoplin.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Scott Joplin - The Entertainer";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;
@@ -113,6 +119,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Current Song: Mozart - Allegro";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;
@@ -131,6 +139,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\The Entertainer.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\ScottJoplin.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Scott Joplin - The Entertainer";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;
@@ -143,6 +153,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Mozart - Allegro";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;
@@ -155,6 +167,8 @@ namespace InCarGestureApplication
                 {
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Rondo.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
+                    DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
+                    DisplaySongArea.Text = "Mozart - Rondo";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;

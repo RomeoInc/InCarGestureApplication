@@ -40,9 +40,9 @@ namespace InCarGestureApplication
         {
             switch (type)
             {
-                case AcceptedGestures.GoBack:
+               /* case AcceptedGestures.GoBack:
                     GoBack(cd, observers);
-                    break;
+                    break;*/
                 case AcceptedGestures.SwipeRight:
                     PowerUp();
                     break;

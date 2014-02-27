@@ -45,8 +45,8 @@ namespace InCarGestureApplication
         }
         public void LeaveWorkspace(int dummyToAllowOverriding) 
         {
-            System.Media.SoundPlayer outOfRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Out Of Range.wav");
-            outOfRangeSound.Play();
+           // System.Media.SoundPlayer outOfRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Out Of Range.wav");
+           // outOfRangeSound.Play();
 
         }
 

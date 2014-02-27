@@ -20,17 +20,22 @@
                 <ColumnDefinition Width="0.2*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="2">
-                <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Music" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="35" FontWeight="Bold"/>  
+                <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="Music" VerticalAlignment="Bottom" FontFamily="CenturyGothic" FontSize="35" FontWeight="Bold"/>
             </Grid>
             <Grid Grid.Column="3">
                 <Image HorizontalAlignment="Right" VerticalAlignment="Top" Source="Images/MusicNote.png "/>
             </Grid>
         </Grid>
-        
+
         <Grid Grid.Row="1">
-            <MediaElement x:Name="currentSong" Volume ="50" LoadedBehavior="Manual" UnloadedBehavior="Stop"/>
-        </Grid>
-        
+            <Border BorderBrush="Transparent" BorderThickness="1" HorizontalAlignment="Left" Height="202" Margin="288,32,0,0" VerticalAlignment="Top" Width="199">
+                <Image x:Name="DisplayArtworkArea" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+
+            <MediaElement x:Name="currentSong" Volume ="50" LoadedBehavior="Manual" UnloadedBehavior="Stop" Visibility="Hidden"/>
+            <TextBlock x:Name="DisplaySongArea" TextAlignment="Center" FontFamily="CenturyGothic" FontSize="25" TextWrapping="Wrap" Margin="242,234,265,32"/>
+            </Grid>
+
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.7*"/>
