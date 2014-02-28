@@ -120,7 +120,7 @@ namespace InCarGestureApplication
                     currentSong.Source = new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Music\Allegro.mp3", UriKind.RelativeOrAbsolute);
                     currentSong.Play();
                     DisplayArtworkArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Mozart.jpg", UriKind.RelativeOrAbsolute));
-                    DisplaySongArea.Text = "Current Song: Mozart - Allegro";
+                    DisplaySongArea.Text = "Mozart - Allegro";
                     Play.Visibility = Visibility.Hidden;
                     Pause.Visibility = Visibility.Visible;
                     paused = false;

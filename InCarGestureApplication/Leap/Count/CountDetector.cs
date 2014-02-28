@@ -56,7 +56,7 @@ namespace Leap.Gestures.Count
         /// How many frames to discard before starting to track
         /// particular gestures.
         /// </summary>
-        public const int GESTURE_FRAMES = 60;
+        public const int GESTURE_FRAMES = 100;
 
         /// <summary>
         /// Lowest error in finger count which is acceptable. This is
@@ -80,7 +80,12 @@ namespace Leap.Gestures.Count
         /// <summary>
         /// Minimum speed for a swipe gesture.
         /// </summary>
-        public const int SWIPE_SPEED = 1000;
+        public const int SWIPE_SPEED = 850;
+
+        /// <summary>
+        /// Minimum speed for a swipe gesture.
+        /// </summary>
+        public const int SWIPE_VERTICAL = 800;
 
         /// <summary>
         /// Minimum speed for a swipe gesture.
@@ -639,9 +644,9 @@ namespace Leap.Gestures.Count
         private AcceptedGestures SwipeLeft(Frame frame) {
             GestureList gestures = frame.Gestures();
 
-            List<Hand> hands = DetectedHands(frame.Hands);
+            /*List<Hand> hands = DetectedHands(frame.Hands);
             if (hands.Count > 0) { 
-                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
+                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);*/
 
                 if (gestures.Count > 0)
                 {
@@ -651,13 +656,13 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.x <= SWIPE_LEFT_DIRECTION)
+                            /*if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.x <= SWIPE_LEFT_DIRECTION)
                             {
                                 Log("Gesture: Back Gesture");
                                 gestureType = AcceptedGestures.GoBack;
                                 return gestureType;
-                            }
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.x <= SWIPE_LEFT_DIRECTION)
+                            }*/
+                            if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.x <= SWIPE_LEFT_DIRECTION)
                             {
                                 Log("Gesture: Swipe left");
                                 gestureType = AcceptedGestures.SwipeLeft;
@@ -665,7 +670,7 @@ namespace Leap.Gestures.Count
                             }
                         }
                     }
-                }
+               // }
             }
             return AcceptedGestures.InvalidGesture;
         }
@@ -673,10 +678,10 @@ namespace Leap.Gestures.Count
         private AcceptedGestures SwipeRight(Frame frame) {
             GestureList gestures = frame.Gestures();
 
-            List<Hand> hands = DetectedHands(frame.Hands);
+            /*List<Hand> hands = DetectedHands(frame.Hands);
             if (hands.Count > 0)
             {
-                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);
+                List<Finger> fingers = ExtendedFingers(hands[0].Fingers, false);*/
 
                 if (gestures.Count > 0)
                 {
@@ -685,13 +690,13 @@ namespace Leap.Gestures.Count
                         if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
-                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.x >= SWIPE_RIGHT_DIRECTION)
+                           /* if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.x >= SWIPE_RIGHT_DIRECTION)
                             {
                                 Log("Gesture: Answer/Finish Call");
                                 gestureType = AcceptedGestures.AnswerCall;
                                 return gestureType;
-                            }
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.x >= SWIPE_RIGHT_DIRECTION)
+                            }*/
+                            if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.x >= SWIPE_RIGHT_DIRECTION)
                             {
                                 Log("Gesture: Swipe Right");
                                 gestureType = AcceptedGestures.SwipeRight;
@@ -699,7 +704,7 @@ namespace Leap.Gestures.Count
                             }
                         }
                     }
-                }
+                //}
             }
             return AcceptedGestures.InvalidGesture;
         }
@@ -716,7 +721,7 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 Log("Gesture: Swipe Up");
                                 gestureType = AcceptedGestures.SwipeUp;
@@ -739,7 +744,7 @@ namespace Leap.Gestures.Count
                     if (gesture.Type == Gesture.GestureType.TYPESWIPE && gesture.State == Gesture.GestureState.STATESTOP)
                     {
                         SwipeGesture swipe = new SwipeGesture(gesture);
-                        if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
+                        if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
                         {
                             Log("Gesture: Swipe Down");
                             gestureType = AcceptedGestures.SwipeDown;
@@ -838,25 +843,25 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            if (swipe.Speed >= SWIPE_VERTICAL && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 Log("Gesture: Open Both Windows");
-                                gestureType = AcceptedGestures.BothOpen;
+                                gestureType = AcceptedGestures.BothClosed;
                                 return gestureType;
                             }
 
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            else if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 if (swipe.Position.x >= 0)
                                 {
                                     Log("Gesture: Open Driver Window");
-                                    gestureType = AcceptedGestures.DriverOpen;
+                                    gestureType = AcceptedGestures.DriverClosed;
                                     return gestureType;
                                 }
                                 else if (swipe.Position.x < 0)
                                 {
                                     Log("Gesture: Open Passenger Window");
-                                    gestureType = AcceptedGestures.PassengerOpen;
+                                    gestureType = AcceptedGestures.PassengerClosed;
                                     return gestureType;
                                 }
 
@@ -885,25 +890,25 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_SPEED && fingers.Count == 2 && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
+                            if (swipe.Speed >= SWIPE_VERTICAL && fingers.Count == 2 && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
                             {
                                 Log("Gesture: Close Both Windows");
-                                gestureType = AcceptedGestures.BothClosed;
+                                gestureType = AcceptedGestures.BothOpen;
                                 return gestureType;
                             }
 
-                            else if (swipe.Speed >= SWIPE_SPEED && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
+                            else if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y <= SWIPE_DOWN_DIRECTION)
                             {
                                 if (swipe.Position.x >= 0)
                                 {
                                     Log("Gesture: Open Driver Window");
-                                    gestureType = AcceptedGestures.DriverClosed;
+                                    gestureType = AcceptedGestures.DriverOpen;
                                     return gestureType;
                                 }
                                 else if (swipe.Position.x < 0)
                                 {
                                     Log("Gesture: Open Passenger Window");
-                                    gestureType = AcceptedGestures.PassengerClosed;
+                                    gestureType = AcceptedGestures.PassengerOpen;
                                     return gestureType;
                                 }
 
