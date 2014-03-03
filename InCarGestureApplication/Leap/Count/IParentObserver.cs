@@ -8,5 +8,8 @@ namespace Leap.Gestures.Count
 {
     public interface IParentObserver
     {
+        // Workspace updates
+        void EnterWorkspace(int hands, int fingers);
+        void LeaveWorkspace(int dummyToAllowOverriding);
     }
 }

@@ -56,7 +56,7 @@ namespace Leap.Gestures.Count
         /// How many frames to discard before starting to track
         /// particular gestures.
         /// </summary>
-        public const int GESTURE_FRAMES = 100;
+        public const int GESTURE_FRAMES = 80;
 
         /// <summary>
         /// Lowest error in finger count which is acceptable. This is
@@ -80,12 +80,12 @@ namespace Leap.Gestures.Count
         /// <summary>
         /// Minimum speed for a swipe gesture.
         /// </summary>
-        public const int SWIPE_SPEED = 850;
+        public const int SWIPE_SPEED = 800;
 
         /// <summary>
         /// Minimum speed for a swipe gesture.
         /// </summary>
-        public const int SWIPE_VERTICAL = 800;
+        public const int SWIPE_VERTICAL = 650;
 
         /// <summary>
         /// Minimum speed for a swipe gesture.
@@ -1008,11 +1008,7 @@ namespace Leap.Gestures.Count
 
             foreach (IParentObserver observer in observers)
             {
-                if (observer is ICountObserver)
-                {
-                    ICountObserver ic = (ICountObserver)observer;
-                    ic.EnterWorkspace(-1, fingers);
-                }
+                observer.EnterWorkspace(-1, fingers);
             }
 
             Log("Count: EnterWorkspace");
@@ -1033,12 +1029,7 @@ namespace Leap.Gestures.Count
 
             foreach (IParentObserver observer in observers)
             {
-                if (observer is ICountObserver)
-                {
-                    ICountObserver ic = (ICountObserver)observer;
-                    ic.LeaveWorkspace(0);
-                }
-
+                observer.LeaveWorkspace(0);
                 Log("Count: LeaveWorkspace");
             }
         }

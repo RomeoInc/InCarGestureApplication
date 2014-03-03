@@ -36,6 +36,22 @@ namespace InCarGestureApplication
             passengerState = 1;
         }
 
+        public void EnterWorkspace(int hands, int fingers)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Green);
+            }));
+        }
+
+        public void LeaveWorkspace(int dummyToAllowOverriding)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Red);
+            }));
+        }
+
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers)
         {
             switch (type)

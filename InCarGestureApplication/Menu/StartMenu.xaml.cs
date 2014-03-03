@@ -40,8 +40,8 @@ namespace InCarGestureApplication
 
         public void EnterWorkspace(int hands, int fingers) 
         {
-            System.Media.SoundPlayer inRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\In Range.wav");
-            inRangeSound.Play();
+           //System.Media.SoundPlayer inRangeSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\In Range.wav");
+           //inRangeSound.Play();
         }
         public void LeaveWorkspace(int dummyToAllowOverriding) 
         {

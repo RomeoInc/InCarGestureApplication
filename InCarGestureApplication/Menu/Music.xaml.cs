@@ -42,6 +42,22 @@ namespace InCarGestureApplication
             }));
         }
 
+        public void EnterWorkspace(int hands, int fingers)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Green);
+            }));
+        }
+
+        public void LeaveWorkspace(int dummyToAllowOverriding)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Red);
+            }));
+        }
+
         public void GestureComplete(AcceptedGestures type, CountDetector cd, List<IParentObserver> observers){
             switch(type){
                /* case AcceptedGestures.GoBack:
@@ -59,7 +75,7 @@ namespace InCarGestureApplication
                 case AcceptedGestures.RotateAntiClockwise:
                     TurnDown();
                     break;
-                case AcceptedGestures.SwipeIn:
+                case AcceptedGestures.SwipeDown:
                     Interact();
                     break;
                 default:

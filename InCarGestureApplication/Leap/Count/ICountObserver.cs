@@ -7,10 +7,6 @@ namespace Leap.Gestures.Count
 {
     public interface ICountObserver: IParentObserver
     {
-        // Workspace updates
-        void EnterWorkspace(int hands, int fingers);
-        void LeaveWorkspace(int dummyToAllowOverriding);
-
         // Count selection updates
         void CountStart(Vector pos, ROI.ROI roi, int count, CountDetector cd, List<IParentObserver> observers);
         void CountStop();

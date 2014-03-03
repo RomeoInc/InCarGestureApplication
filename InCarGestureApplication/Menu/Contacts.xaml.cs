@@ -25,6 +25,22 @@ namespace InCarGestureApplication
         int selected;
         //Stopwatch stopWatch;
 
+        public void EnterWorkspace(int hands, int fingers)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Green);
+            }));
+        }
+
+        public void LeaveWorkspace(int dummyToAllowOverriding)
+        {
+            Detector.Dispatcher.Invoke((Action)(() =>
+            {
+                Detector.Fill = new SolidColorBrush(Colors.Red);
+            }));
+        }
+
         public Contacts()
         {
             InitializeComponent();
