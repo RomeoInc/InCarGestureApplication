@@ -97,8 +97,7 @@ namespace InCarGestureApplication
                 }
             }
         }
-
-        
+                
         private void NextSong()
         {
             if (songNumber == 1)
@@ -198,6 +197,7 @@ namespace InCarGestureApplication
         private void TurnUp()
         {
            currentSong.Dispatcher.Invoke((Action)(() => {
+               rotateAC.Opacity = 1;
                 if (volumeScale < VolumeSlider.Maximum)
                 {
                     System.Media.SoundPlayer volumeUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Up.wav");
@@ -206,13 +206,18 @@ namespace InCarGestureApplication
                     volumeScale++;
                     currentSong.Volume = volume;
                     VolumeSlider.Value = volumeScale;
-                }                
+                }
+                if (volumeScale == VolumeSlider.Maximum)
+                {
+                    rotateC.Opacity = 0.2;
+                }
             }));
         }
 
         private void TurnDown()
         {
             currentSong.Dispatcher.Invoke((Action)(() => {
+                rotateC.Opacity = 1;
                 if (volumeScale > VolumeSlider.Minimum)
                 {
                     System.Media.SoundPlayer volumeDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Volume Down.wav");
@@ -221,6 +226,10 @@ namespace InCarGestureApplication
                     volumeScale--;
                     currentSong.Volume = volume;
                     VolumeSlider.Value = volumeScale;
+                }
+                if (volumeScale == VolumeSlider.Minimum)
+                {
+                    rotateAC.Opacity = 0.2;
                 }
             }));
         }

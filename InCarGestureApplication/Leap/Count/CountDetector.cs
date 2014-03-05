@@ -78,14 +78,19 @@ namespace Leap.Gestures.Count
         public const int EDGE_THRESHOLD = 20;
 
         /// <summary>
-        /// Minimum speed for a swipe gesture.
+        /// Minimum speed for a horizontal swipe gesture.
         /// </summary>
         public const int SWIPE_SPEED = 800;
 
         /// <summary>
-        /// Minimum speed for a swipe gesture.
+        /// Minimum speed for a vertical swipe gesture.
         /// </summary>
         public const int SWIPE_VERTICAL = 650;
+
+        /// <summary>
+        /// Minimum speed for the up swipe gesture.
+        /// </summary>
+        public const int SWIPE_UP = 500;
 
         /// <summary>
         /// Minimum speed for a swipe gesture.
@@ -721,7 +726,7 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            if (swipe.Speed >= SWIPE_UP && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 Log("Gesture: Swipe Up");
                                 gestureType = AcceptedGestures.SwipeUp;
@@ -843,14 +848,14 @@ namespace Leap.Gestures.Count
                         {
                             SwipeGesture swipe = new SwipeGesture(gesture);
 
-                            if (swipe.Speed >= SWIPE_VERTICAL && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            if (swipe.Speed >= SWIPE_UP && fingers.Count == 2 && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 Log("Gesture: Open Both Windows");
                                 gestureType = AcceptedGestures.BothClosed;
                                 return gestureType;
                             }
 
-                            else if (swipe.Speed >= SWIPE_VERTICAL && swipe.Direction.y >= SWIPE_UP_DIRECTION)
+                            else if (swipe.Speed >= SWIPE_UP && swipe.Direction.y >= SWIPE_UP_DIRECTION)
                             {
                                 if (swipe.Position.x >= 0)
                                 {

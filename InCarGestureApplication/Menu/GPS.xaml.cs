@@ -104,6 +104,10 @@ namespace InCarGestureApplication
 
         private void ScrollLeft()
         {
+            swipeRight.Dispatcher.Invoke((Action)(() =>
+            {
+                swipeRight.Opacity = 1;
+            }));
             if (horizontal >= 0 && vertical == 0 && !zoom)
             {
                 if (horizontal == 0)
@@ -111,10 +115,12 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Left.png", UriKind.RelativeOrAbsolute));
+                        horizontal--;
+                        System.Media.SoundPlayer scrollLeftSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Left.wav");
+                        scrollLeftSound.Play();
+                        swipeUp.Opacity = 0.2;
+                        swipeDown.Opacity = 0.2;
                     }));
-                    horizontal--;
-                    System.Media.SoundPlayer scrollLeftSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Left.wav");
-                    scrollLeftSound.Play();
                 }
 
                 else if (horizontal == 1)
@@ -122,16 +128,31 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Default.png", UriKind.RelativeOrAbsolute));
+                        horizontal--;
+                        System.Media.SoundPlayer scrollLeftSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Left.wav");
+                        scrollLeftSound.Play();
+                        swipeUp.Opacity = 1;
+                        swipeDown.Opacity = 1;
                     }));
-                    horizontal--;
-                    System.Media.SoundPlayer scrollLeftSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Left.wav");
-                    scrollLeftSound.Play();
+                }
+                if (horizontal == -1)
+                {
+                    swipeLeft.Dispatcher.Invoke((Action)(() =>
+                    {
+                        swipeLeft.Opacity = 0.2;
+                    }));
                 }
             }
         }
 
         private void ScrollRight()
         {
+            swipeLeft.Dispatcher.Invoke((Action)(() =>
+            {
+                swipeLeft.Opacity = 1;
+            }));
+
+
             if (horizontal <= 0 && vertical == 0 && !zoom)
             {
                 if (horizontal == -1)
@@ -139,10 +160,12 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Default.png", UriKind.RelativeOrAbsolute));
+                        horizontal++;
+                        System.Media.SoundPlayer scrollRightSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Right.wav");
+                        scrollRightSound.Play();
+                        swipeUp.Opacity = 1;
+                        swipeDown.Opacity = 1;
                     }));
-                    horizontal++;
-                    System.Media.SoundPlayer scrollRightSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Right.wav");
-                    scrollRightSound.Play();
                 }
 
                 else if (horizontal == 0)
@@ -150,16 +173,29 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Right.png", UriKind.RelativeOrAbsolute));
+                        horizontal++;
+                        System.Media.SoundPlayer scrollRightSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Right.wav");
+                        scrollRightSound.Play();
+                        swipeUp.Opacity = 0.2;
+                        swipeDown.Opacity = 0.2;
                     }));
-                    horizontal++;
-                    System.Media.SoundPlayer scrollRightSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Right.wav");
-                    scrollRightSound.Play();
+                }
+                if (horizontal == 1)
+                {
+                    swipeRight.Dispatcher.Invoke((Action)(() =>
+                    {
+                        swipeRight.Opacity = 0.2;
+                    }));
                 }
             }
         }
 
         private void ScrollUp()
         {
+            swipeDown.Dispatcher.Invoke((Action)(() =>
+            {
+                swipeDown.Opacity = 1;
+            }));
             if (vertical <= 0 && horizontal == 0 && !zoom)
             {
                 if (vertical == 0)
@@ -167,10 +203,12 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Up.png", UriKind.RelativeOrAbsolute));
+                        vertical++;
+                        System.Media.SoundPlayer scrollUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Up.wav");
+                        scrollUpSound.Play();
+                        swipeLeft.Opacity = 0.2;
+                        swipeRight.Opacity = 0.2;
                     }));
-                    vertical++;
-                    System.Media.SoundPlayer scrollUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Up.wav");
-                    scrollUpSound.Play();
                 }
 
                 else if (vertical == -1)
@@ -178,16 +216,29 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Default.png", UriKind.RelativeOrAbsolute));
+                        vertical++;
+                        System.Media.SoundPlayer scrollUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Up.wav");
+                        scrollUpSound.Play();
+                        swipeLeft.Opacity = 1;
+                        swipeRight.Opacity = 1;
                     }));
-                    vertical++;
-                    System.Media.SoundPlayer scrollUpSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Up.wav");
-                    scrollUpSound.Play();
+                }
+                if (vertical == 1)
+                {
+                    swipeUp.Dispatcher.Invoke((Action)(() =>
+                    {
+                        swipeUp.Opacity = 0.2;
+                    }));
                 }
             }
         }
 
         private void ScrollDown()
         {
+            swipeUp.Dispatcher.Invoke((Action)(() =>
+            {
+                swipeUp.Opacity = 1;
+            }));
             if (vertical >= 0 && horizontal == 0 && !zoom)
             {
                 if (vertical == 0)
@@ -195,10 +246,12 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Down.png", UriKind.RelativeOrAbsolute));
+                        vertical--;
+                        System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
+                        scrollDownSound.Play();
+                        swipeLeft.Opacity = 0.2;
+                        swipeRight.Opacity = 0.2;
                     }));
-                    vertical--;
-                    System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
-                    scrollDownSound.Play();
                 }
 
                 else if (vertical == 1)
@@ -206,10 +259,19 @@ namespace InCarGestureApplication
                     MapArea.Dispatcher.Invoke((Action)(() =>
                     {
                         MapArea.Source = new BitmapImage(new Uri(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Images\Map\Default.png", UriKind.RelativeOrAbsolute));
+                        vertical--;
+                        System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
+                        scrollDownSound.Play();
+                        swipeLeft.Opacity = 1;
+                        swipeRight.Opacity = 1;
                     }));
-                    horizontal--;
-                    System.Media.SoundPlayer scrollDownSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Scroll Down.wav");
-                    scrollDownSound.Play();
+                }
+                if (vertical == -1)
+                {
+                    swipeDown.Dispatcher.Invoke((Action)(() =>
+                    {
+                        swipeDown.Opacity = 0.2;
+                    }));
                 }
             }
         }
@@ -218,6 +280,11 @@ namespace InCarGestureApplication
         {
             if (!zoom)
             {
+                zoomIn.Dispatcher.Invoke((Action)(() =>
+                {
+                    zoomIn.Visibility = Visibility.Hidden;
+                    zoomOut.Visibility = Visibility.Visible;
+                }));
                 if (horizontal == 0 && vertical == 0)
                 {
                     MapArea.Dispatcher.Invoke((Action)(() =>
@@ -275,6 +342,11 @@ namespace InCarGestureApplication
         {
             if (zoom)
             {
+                zoomIn.Dispatcher.Invoke((Action)(() => {
+                    zoomIn.Visibility = Visibility.Visible;
+                    zoomOut.Visibility = Visibility.Hidden;
+                }));
+
                 if (horizontal == 0 && vertical == 0)
                 {
                     MapArea.Dispatcher.Invoke((Action)(() =>

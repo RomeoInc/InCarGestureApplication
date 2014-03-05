@@ -95,6 +95,7 @@ namespace InCarGestureApplication
             ContactList.Dispatcher.Invoke((Action)(() => {
                 if (selected < ContactList.Children.Count -1)
                 {
+                    swipeUp.Opacity = 1;
                     Border currentContact = (Border)ContactList.Children[selected];
                     currentContact.Opacity = 0.5;
                     currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
@@ -107,7 +108,10 @@ namespace InCarGestureApplication
 
                     System.Media.SoundPlayer nextSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Next.wav");
                     nextSound.Play();
-
+                    if (selected == ContactList.Children.Count - 1)
+                    {
+                        swipeDown.Opacity = 0.2;
+                    }
                 }
             }));
         }
@@ -117,6 +121,7 @@ namespace InCarGestureApplication
             ContactList.Dispatcher.Invoke((Action)(() => {
                 if (selected > 0)
                 {
+                    swipeDown.Opacity = 1;
                     Border currentContact = (Border)ContactList.Children[selected];
                     currentContact.Opacity = 0.5;
                     currentContact.BorderBrush = new SolidColorBrush(Colors.Transparent);
@@ -129,6 +134,10 @@ namespace InCarGestureApplication
 
                     System.Media.SoundPlayer previousSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Previous.wav");
                     previousSound.Play();
+                    if (selected == 0)
+                    {
+                        swipeUp.Opacity = 0.2;
+                    }
                 }
             }));
         }
@@ -137,6 +146,8 @@ namespace InCarGestureApplication
         {
             DisplayImageArea.Dispatcher.Invoke((Action)(() =>
             {
+                call.Visibility = Visibility.Hidden;
+                hangUp.Visibility = Visibility.Visible;
                 Border currentContactBorder = (Border)ContactList.Children[selected];
                 Grid currentContact = (Grid)currentContactBorder.Child;
                 Image i = currentContact.Children.OfType<Image>().FirstOrDefault();
@@ -174,17 +185,22 @@ namespace InCarGestureApplication
 
         private void HangUp()
         {
-            System.Media.SoundPlayer endSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hanging Up.wav");
-            endSound.Play();
             DisplayNameArea.Dispatcher.Invoke((Action)(() =>
             {
-                DisplayNameArea.Text = "Ending Call";
+                if (DisplayNameArea.Text != "")
+                {
+                    DisplayNameArea.Text = "Ending Call";
+                    System.Media.SoundPlayer endSound = new System.Media.SoundPlayer(@"C:\Users\Gerard\Documents\Visual Studio 2013\Projects\InCarGestureApplication\InCarGestureApplication\Menu\Audio\Audio Feedback\Hanging Up.wav");
+                    endSound.Play();
+                }
             }));
             System.Threading.Thread.Sleep(1500);
             DisplayNameArea.Dispatcher.Invoke((Action)(() =>
                 {
                 DisplayImageArea.Source = null;
                 DisplayNameArea.Text = "";
+                call.Visibility = Visibility.Visible;
+                hangUp.Visibility = Visibility.Hidden;
             }));
             
         }

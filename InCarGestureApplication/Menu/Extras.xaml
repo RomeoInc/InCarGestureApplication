@@ -120,12 +120,43 @@
                         </Grid>
 
                     </Grid>
-
+                    
                 </Grid>
-            </Grid>
+                
+                </Grid>
+            
         </Grid>
-        
-        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Image x:Name="swipeLeft" Source="Images/Hand Models/5 fingers/swipe left.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Image x:Name="swipeRight" Source="Images/Hand Models/5 fingers/swipe right.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Image x:Name="rotateAC" Source="Images/Hand Models/1 finger/rotate ac.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Image x:Name="rotateC" Source="Images/Hand Models/1 finger/rotate c.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Image x:Name="driverUp" Source="Images/Hand Models/5 fingers/DW up.png " VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
+                <Image x:Name="driverDown" Source="Images/Hand Models/5 fingers/DW down.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="5">
+                <Image x:Name="passengerUp" Source="Images/Hand Models/5 fingers/PW up.png " VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>
+                <Image x:Name="passengerDown" Source="Images/Hand Models/5 fingers/PW down.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>            
+        </Grid>
+
 
     </Grid>
 </UserControl>
