@@ -57,16 +57,16 @@ namespace InCarGestureApplication
                /* case AcceptedGestures.GoBack:
                     Back(cd, observers);
                     break;*/
-                case AcceptedGestures.SwipeLeft:
+                case AcceptedGestures.SwipeRight:
                     ScrollLeft();
                     break;
-                case AcceptedGestures.SwipeRight:
+                case AcceptedGestures.SwipeLeft:
                     ScrollRight();
                     break;
-                case AcceptedGestures.SwipeUp:
+                case AcceptedGestures.SwipeDown:
                     ScrollUp();
                     break;
-                case AcceptedGestures.SwipeDown:
+                case AcceptedGestures.SwipeUp:
                     ScrollDown();
                     break;
                 case AcceptedGestures.SwipeIn:

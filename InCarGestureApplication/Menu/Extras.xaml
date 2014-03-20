@@ -142,10 +142,10 @@
                 <Image x:Name="swipeRight" Source="Images/Hand Models/5 fingers/swipe right.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="2">
-                <Image x:Name="rotateAC" Source="Images/Hand Models/1 finger/rotate ac.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image x:Name="rotateAC" Source="Images/Hand Models/5 fingers/rotateACW.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="3">
-                <Image x:Name="rotateC" Source="Images/Hand Models/1 finger/rotate c.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image x:Name="rotateC" Source="Images/Hand Models/5 fingers/rotateCW.png " VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
             <Grid Grid.Column="4">
                 <Image x:Name="driverUp" Source="Images/Hand Models/5 fingers/DW up.png " VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden"/>

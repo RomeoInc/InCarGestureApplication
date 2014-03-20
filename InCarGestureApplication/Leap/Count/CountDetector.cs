@@ -814,12 +814,12 @@ namespace Leap.Gestures.Count
                 foreach (Gesture gesture in gestures) {
                     if (gesture.Type == Gesture.GestureType.TYPECIRCLE && gesture.State == Gesture.GestureState.STATESTOP) {
                         CircleGesture circle = new CircleGesture(gesture);
-                        if (circle.Pointable.Direction.AngleTo(circle.Normal) <= Math.PI / 4) {
+                        if (circle.Pointable.Direction.AngleTo(circle.Normal) <= Math.PI / 4 && circle.Progress > 0.80) {
                             Log("Gesture: Clockwise Rotation");
                             gestureType = AcceptedGestures.RotateClockwise;
                             return gestureType;
                         }
-                        else
+                        else if (circle.Progress > 0.80)
                         {
                             Log("Gesture: Anti-Clockwise Rotation");
                             gestureType = AcceptedGestures.RotateAntiClockwise;

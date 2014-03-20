@@ -219,6 +219,8 @@
     <Content Include="Menu\Audio\Music\Allegro.mp3" />
     <Content Include="Menu\Audio\Music\Rondo.mp3" />
     <Content Include="Menu\Audio\Music\The Entertainer.mp3" />
+    <Resource Include="Menu\Images\Hand Models\5 fingers\rotateACW.png" />
+    <Resource Include="Menu\Images\Hand Models\5 fingers\rotateCW.png" />
     <Resource Include="Menu\Images\ScottJoplin.jpg" />
     <Resource Include="Menu\Images\Mozart.jpg" />
     <Resource Include="Menu\Images\Map\Default Zoom.png" />
